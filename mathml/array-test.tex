@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{url}
+\date{2017/05/19}
+\author{Michal Hoftich}
+\title{Test for colortbl and array packages with mathml output}
+
+\usepackage[table]{xcolor}
+
+\definecolor{maroon}{cmyk}{0,0.87,0.68,0.32}
+
+\begin{document}
+
+\maketitle
+
+The original configuration for array package caused HTML code to be inserted when \verb|\hline| was used
+in math arrays\footnote{For more info see \url{https://tex.stackexchange.com/q/370450/2891}}. 
+
+Compile using
+
+\begin{verbatim}
+make4ht array-test.tex "html5,mathml,fn-in"
+\end{verbatim}
+
+
+\[\begin{array}{|l|c|} \hline 1 & 2\\ \end{array}\]
+
+
+\[
+\begin{array}{|l|cr}
+  left1 & center1 & right1\\
+  \hline
+  d & e & f
+\end{array} 
+\]
+
+\begin{tabular}{l|l}
+  l & l\\
+  \hline
+  l & l\\
+\end{tabular}
+
+\noindent\begin{tabular}{|l|c|}
+  \rowcolor{maroon}
+  one & two \\
+  \rowcolor{maroon!50}
+  three & four \\
+  \rowcolor{maroon!10}
+  five & six
+\end{tabular}
+
+\end{document}

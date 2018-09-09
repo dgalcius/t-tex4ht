@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{expl3}
+
+% define macro with accented characters in the preamble
+\def\ahoj{příliš}
+\begin{document}
+
+\LaTeX\ now defines basic Latin character encoding characters, without need to use Fontspec, Fontenc or Inputenc packages. Run this file using
+
+\begin{verbatim}
+make4ht -uxm draft xelatex.tex
+\end{verbatim}
+
+Accented text test
+\ahoj\ žluťoučký
+\end{document}

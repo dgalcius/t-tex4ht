@@ -1,0 +1,58 @@
+%\documentclass{article}
+\documentclass{memoir}
+\usepackage{amsmath}
+\begin{document}
+
+Arrays of mathematics are typeset using one of the matrix environments as 
+in
+\[
+	\begin{bmatrix}
+		1 & x & 0 \\
+		0 & 1 & -1
+	\end{bmatrix}\begin{bmatrix}
+		1  \\
+		y  \\
+		1
+	\end{bmatrix}
+	=\begin{bmatrix}
+		1+xy  \\
+		y-1
+	\end{bmatrix}.
+\]
+Case statements use cases:
+\[
+	|x|=\begin{cases}
+		x, & \text{if }x\geq 0\,,  \\
+		-x, & \text{if }x< 0\,.
+	\end{cases}
+\]
+Many arrays have lots of dots all over the place as in
+\[
+	\begin{matrix}
+		-2 & 1 & 0 & 0 & \cdots & 0  \\
+		1 & -2 & 1 & 0 & \cdots & 0  \\
+		0 & 1 & -2 & 1 & \cdots & 0  \\
+		0 & 0 & 1 & -2 & \ddots & \vdots \\
+		\vdots & \vdots & \vdots & \ddots & \ddots & 1  \\
+		0 & 0 & 0 & \cdots & 1 & -2
+	\end{matrix}
+\]
+
+\[
+  \begin{matrix}
+    1 & 2\\
+    3 & 4
+  \end{matrix}
+\]
+\[ \left( \begin{array}{ccc}
+      a & b & c \\
+      d & e & f \\
+      g & h & i \end{array} \right)
+\] 
+
+\begin{tabular}{ll}
+first & second\\
+third&fourth\\
+\end{tabular}
+
+\end{document}

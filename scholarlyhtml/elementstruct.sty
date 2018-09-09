@@ -1,0 +1,42 @@
+\ProvidesPackage{elementstruct}
+
+
+% The following macro should not be used directly in the user
+% configurations. Higher level macros like \InlineTagStart 
+% should be used instead
+% #1 logical block name
+% #2 attributes used only for the current element
+\def\InsertTagStart#1#2{%
+  \edef\local@properties{\ifx\relax#2\relax\else\space#2\fi}
+  \HCode{<\get@tag{#1}\get@block@properties{#1}\local@properties>}%
+}
+\def\InsertTagEnd#1{\HCode{</\get@tag{#1}>}}
+
+\long\def\InlineElementStart#1#2{\InsertTagStart{#1}{#2}}
+\long\def\InlineElementEnd#1{\InsertTagEnd{#1}}
+
+\long\def\BlockElementStart#1#2{\ifvmode\IgnorePar\fi\EndP\InsertTagStart{#1}{#2}}
+\long\def\BlockElementEnd#1#2{\ifvmode\IgnorePar\fi\EndP\InsertTagEnd{#1}}
+
+% define default values for a new logical block
+\def\NewLogicalBlock#1{%
+  \SetTag{#1}{span}%
+  \expandafter\def\csname #1:properties\endcsname{}
+}
+
+\def\SetTag#1#2{\expandafter\xdef\csname #1:tagname\endcsname{#2}}
+\def\get@tag#1{\expandafter\expandafter\csname #1:tagname\endcsname}
+
+\def\SetBlockProperty#1#2#3{%
+  \expandafter\ifcsname #1:property:#2\endcsname\else%
+  \expandafter\edef\csname #1:properties\endcsname{\csname #1:properties\endcsname\space\csname #1:property:#2\endcsname }
+  \fi%
+  \expandafter\def\csname #1:property:#2\endcsname{#2="#3"}
+}
+
+\def\get@block@properties#1{%
+\expandafter\csname #1:properties\endcsname%
+}
+
+
+\endinput
