@@ -24,3 +24,9 @@ clean:
 
 %.save: 
 	make -f *.Makefile $*.s
+
+%.new: t.Makefile
+	m4 -DFILE=$* $< >$*.Makefile  
+	touch $*.s
+
+
