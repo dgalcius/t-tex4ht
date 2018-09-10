@@ -1,6 +1,32 @@
 
 * Set up a unit test
 
+#+BEGIN_SRC 
+make FOO.new
+#+END_SRC
+
+Produces FOO.Makefile and FOO.s(empty)
+
 * Checking 
 
+#+BEGIN_SRC 
+make FOO.check
+#+END_SRC
+
+Copy files to ./build folder. Run 'make -f FOO.Makefile'.
+This produces FOO.diff file. Empty file is SUCCESS. 
+Non-empty file is FAILURE.
+
 * Saving
+
+#+BEGIN_SRC 
+make FOO.save
+#+END_SRC
+
+Save output produced in _check_ stage as FOO.s(non-empty)
+
+* t.Makefile template file
+  
+This file is a template fo FOO.Makefile generation.
+FILE is expandaded into actual filename 
+when 'make FOO.new' is run.  
