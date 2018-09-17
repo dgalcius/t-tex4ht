@@ -1,11 +1,44 @@
+A unit consists of three main files:
 
-* Set up a unit test
+- foo.tex.
+
+ Minimal (non-)working example .tex file.
+ Would be nice to have:
+           - author/date of a file
+           - issue description
+           - solution description
+
+- foo.s.
+
+  (Pre)saved result file, which is compared against result(s).
+  Can be in various farmats: html, xml, css, plain text, svg, binary (png)
+
+- foo.Makefile
+
+  Define rules:
+  1. how to produce result(s)
+  2. how to compare results
+
+
+* Setting new unit test
+
+Save .tex file as FOO.tex
 
 #+BEGIN_SRC 
 make FOO.new
 #+END_SRC
+or
+#+BEGIN_SRC
+make file=FOO new
+#+END_SRC
 
-Produces FOO.Makefile and FOO.s(empty)
+Produces FOO.Makefile from t.Makefile template
+and FOO.s -- empty.
+
+Amend FOO.Makefile.
+
+
+Requires GNU M4 macro processor.
 
 * Checking 
 
@@ -13,9 +46,21 @@ Produces FOO.Makefile and FOO.s(empty)
 make FOO.check
 #+END_SRC
 
+or
+
+#+BEGIN_SRC
+make file=FOO check
+#+END_SRC
+
 Copy files to ./build folder. Run 'make -f FOO.Makefile'.
 This produces FOO.diff file. Empty file is SUCCESS. 
 Non-empty file is FAILURE.
+
+Checking the bundle:
+
+#+BEGIN_SRC
+make check
+#+END_SRC
 
 * Saving
 
@@ -23,10 +68,19 @@ Non-empty file is FAILURE.
 make FOO.save
 #+END_SRC
 
+or
+
+#+BEGIN_SRC
+make file=FOO save
+#+END_SRC
+
+
 Save output produced in _check_ stage as FOO.s(non-empty)
 
 * t.Makefile template file
   
-This file is a template fo FOO.Makefile generation.
-FILE is expandaded into actual filename 
-when 'make FOO.new' is run.  
+This file is a template for FOO.Makefile generation.
+
+Variables: FILE
+
+Needs GNU M4 macro processor.
