@@ -1,7 +1,7 @@
 # make check 
 # make test=t-hello check
 # make test=t-hello save
-SHELL:=/usr/bin/env bash
+SHELL=/bin/bash
 
 # 3 files are needed for a test unit:
 # (1) *.tex    - input file
@@ -11,6 +11,15 @@ SHELL:=/usr/bin/env bash
 #                  At least two targets needed:
 #                  One for producing output (compiling)
 #                  Another for diffing results.
+
+default:
+	@echo \* for checking:
+	@echo   make file=FOO check
+	@echo   make FOO.check
+	@echo \* for saving:
+	@echo   make file=FOO save
+	@echo   make FOO.save
+
 check: 
 
 .ONESHELL:
