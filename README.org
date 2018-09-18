@@ -1,28 +1,32 @@
+#+TITLE: tex4ht regression tests
+
 A unit consists of three main files:
 
-- foo.tex.
+- ~foo.tex~
 
- Minimal (non-)working example .tex file.
- Would be nice to have:
+ Minimal (non-)working example (MWE) ~.tex~ file.
+ Would be nice to have metadata:
            - author/date of a file
            - issue description
            - solution description
 
-- foo.s.
+- ~foo.s~
 
   (Pre)saved result file, which is compared against result(s).
-  Can be in various farmats: html, xml, css, plain text, svg, binary (png)
+  Can be in various farmats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
 
-- foo.Makefile
+- ~foo.Makefile~
 
   Define rules:
-  1. how to produce result(s)
+  1. how to produce results
   2. how to compare results
-
 
 * Setting new unit test
 
-Save .tex file as FOO.tex
+0. save your MWE ~.tex~ file as ~FOO.tex~
+
+1. create ~FOO.Makefile~ from ~t.Makefile~ template
+   and ~FOO.s~ -- empty
 
 #+BEGIN_SRC 
 make FOO.new
@@ -32,13 +36,8 @@ or
 make file=FOO new
 #+END_SRC
 
-Produces FOO.Makefile from t.Makefile template
-and FOO.s -- empty.
 
-Amend FOO.Makefile.
-
-
-Requires GNU M4 macro processor.
+Amend ~FOO.Makefile~. Requires ~GNU M4 macro~ processor.
 
 * Checking 
 
@@ -52,14 +51,13 @@ or
 make file=FOO check
 #+END_SRC
 
-Copy files to ./build folder. Run 'make -f FOO.Makefile'.
-This produces FOO.diff file. Empty file is SUCCESS. 
-Non-empty file is FAILURE.
+This stage copies ~FOO.*~ files to ./build folder, runs ~make -f FOO.Makefile~,
+which produces ~FOO.diff~ file. Empty ~diff~ file is /SUCCESS/, non-empty -- /FAILURE/
 
 Checking the bundle:
 
 #+BEGIN_SRC
-make check
+make checkall
 #+END_SRC
 
 * Saving
@@ -75,12 +73,12 @@ make file=FOO save
 #+END_SRC
 
 
-Save output produced in _check_ stage as FOO.s(non-empty)
+Saves the output produced in the _check_ stage as ~FOO.s~
 
 * t.Makefile template file
   
-This file is a template for FOO.Makefile generation.
+This file is a template for ~FOO.Makefile~ generation.
 
-Variables: FILE
+Variables: ~FILE~
 
 Needs GNU M4 macro processor.
