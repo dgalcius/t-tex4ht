@@ -11,6 +11,7 @@ SHELL=/bin/bash
 #                  At least two targets needed:
 #                  One for producing output (compiling)
 #                  Another for diffing results.
+tasks =
 
 default:
 	@echo \* for checking:
@@ -20,7 +21,12 @@ default:
 	@echo   make file=FOO save
 	@echo   make FOO.save
 
-check: 
+checkall: $(tasks)
+	echo $<
+
+
+check: $(file).check
+new: $(file).new
 
 .ONESHELL:
 %.check: 
