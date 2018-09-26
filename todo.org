@@ -1,0 +1,17 @@
+#+TITLE: todo notes
+
+* TODO Spit Makefile into 2 parts (if possible): common and test-specific
+
+  Use ~include~ directive for reading another Makefile
+
+* TODO Testing setup
+
+  - describe setup
+  - what to test: tex4ht styles, tex4ht driver, tex4ht postprocessor
+  - how to test it each: styles, driver, postprocessor
+
+
+* TODO Examples needed
+
+
+
