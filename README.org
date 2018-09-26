@@ -9,11 +9,13 @@ A unit consists of three main files:
            - author/date of a file
            - issue description
            - solution description
+           - bug ID (?)
+           - etc.
 
 - ~foo.s~
 
-  (Pre)saved result file, which is compared against result(s).
-  Can be in various farmats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
+  Pre-saved results file, which is compared against build results.
+  Can be in various formats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
 
 - ~foo.Makefile~
 
