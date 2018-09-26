@@ -9,6 +9,8 @@ SUCCESS=$(color-green) printf "SUCCESS " ; $(color-pop);
 
 file=t-scrartcl
 
+include ../common.Makefile
+
 default: t-scrartcl.diff
 
 #-1- produce html (xml, png or whatever)
@@ -24,15 +26,6 @@ default: t-scrartcl.diff
 %.s: %.html .FORCE
 	cp $< $@
 
-check: $(file).diff
-	@if [ -s $< ] ; then  $(FAILURE) echo See $< ; else $(SUCCESS) echo \($(file)\) ; fi
-
-save: $(file).s
-
-clean:
-	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
-	rm -f *.css *.html *.lg
-	rm -f *.diff
 
 
 .PRECIOUS: %.html
