@@ -1,8 +1,7 @@
 
-
 file=t-hello
 
-default: t-hello.diff
+include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
 %.html: %.tex .FORCE
@@ -13,20 +12,9 @@ default: t-hello.diff
 	diff $^ > $@ || true
 	@du $@
 
-# save version with -- make -f <test>.save
-%.s: ./build/%.html .FORCE
+# -3- save version with -- make -f <test>.save
+%.s: %.html .FORCE
 	cp $< $@
-
-check: $(file).diff
-	@if [ -s $< ] ; then  $(FAILURE) echo See $< ; else $(SUCCESS) echo \($(file)\) ; fi
-
-save: $(file).s
-
-clean:
-	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
-	rm -f *.css *.html *.lg
-	rm -f *.diff
-
 
 .PRECIOUS: %.html
 .PHONY: %.s
