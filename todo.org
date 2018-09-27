@@ -15,3 +15,5 @@
 
 
 
+* TODO Metadata should go into Test summary report?
+  - how?
