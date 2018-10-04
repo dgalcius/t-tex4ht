@@ -7,9 +7,13 @@ color-red=tput setaf 1; tput bold;
 color-green=tput setaf 2; tput bold;
 color-pop=tput sgr0 #
 
-FAILURE=$(color-red)   printf "FAILURE " ; $(color-pop);
-SUCCESS=$(color-green) printf "SUCCESS " ; $(color-pop);
+FAILURE_=$(color-red)   printf "FAILURE " >> $(sumlog) ; $(color-pop);
+SUCCESS_=$(color-green) printf "SUCCESS " >> $(sumlog) ; $(color-pop);
 
+FAILURE=$(FAILURE_) echo \($$i\). See .build/$$i/$$i.diff >> $(sumlog)
+SUCCESS=$(SUCCESS_)  echo \($$i\). >> $(sumlog)
+
+sumlog=./build/summary.log
 
 # 3 files are needed for a test unit:
 # (1) *.tex    - input file
@@ -42,6 +46,7 @@ check: check.pre check.units check.post
 
 ## prepare build/ folder for tests run
 check.pre:
+	rm -rf build
 	mkdir -p build
 	cp -r tests/* build
 #	cp $*.tex $*.s $*.Makefile build/
@@ -56,11 +61,13 @@ check.units:
 	done
 
 ## prepare tests summary report
+.ONESHELL:
 check.post:
 	clear
 	for i in $(unit); do
-		@if [ -s .build/$$i/$$i.diff ] ; then  $(FAILURE) echo See .build/$$i/$$i.diff ; else $(SUCCESS) echo \($$i\) ; fi
+		@if [ -s ./build/$$i/$$i.diff ] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
 	done
+	cat $(sumlog)
 
 clean:
 	rm -rf build
