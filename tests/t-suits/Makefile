@@ -7,8 +7,11 @@ include ../global.Makefile
 %.html: %.tex .FORCE
 	htlatex $*
 
+output.html: t-suits.html
+	pandoc -s --self-contained -o $@ $<
+
 #-2- compare result with pre-saved version. Diff file should be empty 
-%.diff: %.html %.s
+%.diff: output.html %.s
 	diff $^ > $@ || true
 	@du $@
 
@@ -18,6 +21,7 @@ include ../global.Makefile
 %.s: %.html .FORCE
 	od $*0x.png > $@
 	cat $< >>$@
+
 
 .PRECIOUS: %.html
 .PHONY: %.s
