@@ -84,3 +84,11 @@ This file is a template for ~FOO.Makefile~ generation.
 Variables: ~FILE~
 
 Needs GNU M4 macro processor.
+
+
+* External dependencies
+
+  - GNU make (version 4.1)
+  - GNU M4 macro processor (version 1.4). for Makefile templates
+  - pandoc (version 1.12). For standalone html file generation. see ,e.g., t-suits
+
