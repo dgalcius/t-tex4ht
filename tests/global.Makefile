@@ -15,10 +15,15 @@ default:
 check: $(file).diff
 	@if [ -s $< ] ; then  $(FAILURE) echo See $< ; else $(SUCCESS) echo \($(file)\) ; fi
 
-save: $(file).s
+save: $(file).ss
 
 clean:
 	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
 	rm -f *.css *.html *.lg
 	rm -f *.png
 	rm -f *.diff
+
+.PRECIOUS: %.html
+.PHONY: %.ss
+.FORCE:
+
