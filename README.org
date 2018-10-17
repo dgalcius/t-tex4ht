@@ -90,5 +90,5 @@ Needs GNU M4 macro processor.
 
   - GNU make (version 4.1)
   - GNU M4 macro processor (version 1.4). for Makefile templates
-  - pandoc (version 1.12). For standalone html file generation. see ,e.g., t-suits
+  - pandoc (version 2.3.1). For standalone html file generation. see ,e.g., t-suits, t-lettrine
 
