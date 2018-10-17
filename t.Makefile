@@ -1,28 +1,19 @@
-# no colors if SHELL is unset
-SHELL=/bin/bash
 
-color-red=tput setaf 1; tput bold;
-color-green=tput setaf 2; tput bold;
-color-pop=tput sgr0 #
+file=FILE
 
-FAILURE=$(color-red) echo -n "FAILURE " ; $(color-pop);
-SUCCESS=$(color-green) echo "SUCCESS " ; $(color-pop);
-
-default: FILE.diff
+include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
-%.html: %.tex
+%.html: %.tex .FORCE
 	htlatex $*
 
 #-2- compare result with pre-saved version. Diff file should be empty 
 %.diff: %.html %.s
-	diff $^ > $@
+	diff $^ > $@ || true
+	@du $@
 
-%.check: %.diff
-	@if [ -s $< ] ; then  $(FAILURE) echo See $< ; else $(SUCCESS) echo \($*\) ; fi
-
-# save version with -- make -f <test>.save
-%.s: ./build/%.html .FORCE
+# -3- save version with -- make -f <test>.save
+%.s: %.html .FORCE
 	cp $< $@
 
 .PRECIOUS: %.html
