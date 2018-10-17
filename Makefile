@@ -49,8 +49,6 @@ check.pre:
 	rm -rf build
 	mkdir -p build
 	cp -r tests/* build
-#	cp $*.tex $*.s $*.Makefile build/
-#	cd build; make -f $*.Makefile  default
 
 ## run tests
 .ONESHELL:
@@ -73,11 +71,13 @@ clean:
 	rm -rf build
 
 %.save: 
-	make -f *.Makefile $*.s
+	make -f *.Makefile $*.ss
 
-new: $(file).new
+new: $(unit).new
+
 %.new: t.Makefile
-	m4 -DFILE=$* $< >$*.Makefile  
-	touch $*.s
+	mkdir -p tests/$(unit)
+	m4 -DFILE=$* $< >tests/$(unit)/Makefile
+	touch tests/$(unit)/$*.ss
 
 
