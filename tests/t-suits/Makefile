@@ -9,7 +9,7 @@ include ../global.Makefile
 
 ##-2- produce standalone html file
 output.html: t-suits.html .FORCE
-	pandoc -s --self-contained -o $@ $<
+	pandoc --quiet -s --self-contained -o $@ $<
 
 #-3- compare result with pre-saved version. Diff file should be empty
 %.diff: output.html .FORCE
