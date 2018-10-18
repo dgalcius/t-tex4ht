@@ -1,8 +1,13 @@
 #+TITLE: todo notes
 
-* TODO Spit Makefile into 2 parts (if possible): common and test-specific
+* DONE Spit Makefile into 2 parts (if possible): common and test-specific
 
   Use ~include~ directive for reading another Makefile
+
+  #+BEGIN_SRC Makefile
+  include ../global.Makefile
+
+  #+END_SRC
 
 * TODO Testing setup
 
@@ -15,5 +20,6 @@
 
 
 
-* TODO Metadata should go into Test summary report?
-  - how?
+* DONE Metadata should go into Test summary report?
+
+  test summary report: ./build/summary.log
