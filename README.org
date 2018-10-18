@@ -12,23 +12,29 @@ A unit consists of three main files:
            - bug ID (?)
            - etc.
 
-- ~foo.s~
+- ~foo.ss~
 
   Pre-saved results file, which is compared against build results.
   Can be in various formats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
 
-- ~foo.Makefile~
+- ~Makefile~
 
   Define rules:
   1. how to produce results
   2. how to compare results
 
+  Common targets:
+  1. %.html - generate results
+  2. %.diff - generate diff file
+  3. %.ss   - presave file
+
+
 * Setting new unit test
 
 0. save your MWE ~.tex~ file as ~FOO.tex~
 
-1. create ~FOO.Makefile~ from ~t.Makefile~ template
-   and ~FOO.s~ -- empty
+1. create ~Makefile~ from ~t.Makefile~ template
+   and ~FOO.ss~ -- empty
 
 #+BEGIN_SRC 
 make FOO.new
@@ -39,7 +45,7 @@ make file=FOO new
 #+END_SRC
 
 
-Amend ~FOO.Makefile~. Requires ~GNU M4 macro~ processor.
+Amend ~Makefile~. Requires ~GNU M4 macro~ processor.
 
 * Checking 
 
@@ -50,16 +56,16 @@ make FOO.check
 or
 
 #+BEGIN_SRC
-make file=FOO check
+make unit=FOO check
 #+END_SRC
 
 This stage copies ~FOO.*~ files to ./build folder, runs ~make -f FOO.Makefile~,
 which produces ~FOO.diff~ file. Empty ~diff~ file is /SUCCESS/, non-empty -- /FAILURE/
 
-Checking the bundle:
+Checking all the bundle:
 
 #+BEGIN_SRC
-make checkall
+make check
 #+END_SRC
 
 * Saving
