@@ -63,7 +63,7 @@ check.units:
 check.post:
 	clear
 	for i in $(unit); do
-		@if [ -s ./build/$$i/$$i.diff ] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
+		@if [[ ! -e ./build/$$i/$$i.diff || -s ./build/$$i/$$i.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
 	done
 	cat $(sumlog)
 
