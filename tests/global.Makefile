@@ -22,7 +22,7 @@ save: $f.ss
 clean:
 	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
 	rm -f *.css *.html *.lg
-	rm -f *.png
+	rm -f *.png *.pdf
 	rm -f *.diff
 
 .PRECIOUS: %.html
