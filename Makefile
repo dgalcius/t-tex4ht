@@ -10,7 +10,7 @@ color-pop=tput sgr0 #
 FAILURE_=$(color-red)   printf "FAILURE " >> $(sumlog) ; $(color-pop);
 SUCCESS_=$(color-green) printf "SUCCESS " >> $(sumlog) ; $(color-pop);
 
-FAILURE=$(FAILURE_) echo \($$i\). See .build/$$i/$$i.diff >> $(sumlog)
+FAILURE=$(FAILURE_) echo \($$i\). See ./build/$$i/$$i.diff >> $(sumlog)
 SUCCESS=$(SUCCESS_)  echo \($$i\). >> $(sumlog)
 
 sumlog=./build/summary.log
