@@ -22,6 +22,7 @@ A unit consists of three main files:
   Define rules:
   1. how to produce results
   2. how to compare results
+  3. how to make pre-saved version
 
   Common targets:
   1. %.html - generate results
@@ -68,6 +69,7 @@ Checking all the bundle:
 make check
 #+END_SRC
 
+
 * Saving
 
 #+BEGIN_SRC 
@@ -83,13 +85,14 @@ make file=FOO save
 
 Saves the output produced in the _check_ stage as ~FOO.s~
 
+
 * t.Makefile template file
   
-This file is a template for ~FOO.Makefile~ generation.
+  This file is a template for ~FOO.Makefile~ generation.
 
-Variables: ~FILE~
+  Variables: ~FILE~
 
-Needs GNU M4 macro processor.
+  Needs GNU M4 macro processor.
 
 
 * External dependencies
@@ -97,4 +100,4 @@ Needs GNU M4 macro processor.
   - GNU make (version 4.1)
   - GNU M4 macro processor (version 1.4). for Makefile templates
   - pandoc (version 2.3.1). For standalone html file generation. see ,e.g., t-suits, t-lettrine
-
+  - make4ht (version ??)
