@@ -31,14 +31,11 @@ unit:=$(shell ls -d ./tests/t*/)
 unit:=$(unit:./tests/%/=%)
 
 default:
-	@echo \* check all
-	@echo make check
-	@echo \* check single unit:
-	@echo   make unit=FOO check
-	@echo \* for saving:
-	@echo   make unit=FOO save
-	@echo \* new bare-none unit-test:
-	@echo   make unit=FOO new
+	@printf "$$ make check             *check all units*\n"
+	@printf "$$ make unit=FOO check    *check single unit FOO*\n"
+	@printf "$$ make unit=FOO save     *pre-save single unit FOO*\n"
+	@printf "$$ make unit=FOO new      *new bare-bone unit-test ./tests/FOO/*\n"
+
 
 
 .ONESHELL:
@@ -70,8 +67,6 @@ check.post:
 clean:
 	rm -rf build
 
-%.save: 
-	make -f *.Makefile $*.ss
 
 new: $(unit).new
 
