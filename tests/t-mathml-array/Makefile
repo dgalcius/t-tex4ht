@@ -5,8 +5,8 @@ include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
 %.html: %.tex .FORCE
-	make4ht $< "html,html5,mathml"
-#	htlatex $*
+#	make4ht $* "html5,mathml"
+	htlatex $* "html,html5,mathml"
 
 #-2- compare result with pre-saved version. Diff file should be empty 
 %.diff: %.html
@@ -14,8 +14,8 @@ include ../global.Makefile
 	@du $@
 
 # -3- save version with -- make -f <test>.save
-%.ss: %.html .FORCE
-	cp $< $@
+%.ss: .FORCE
+	cp $f.html $@
 
 .PRECIOUS: %.html
 .PHONY: %.ss
