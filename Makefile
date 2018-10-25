@@ -58,11 +58,12 @@ check.units:
 ## prepare tests summary report
 .ONESHELL:
 check.post:
-	clear
-	for i in $(unit); do
+	@clear
+	@for i in $(unit); do
 		@if [[ ! -e ./build/$$i/$$i.diff || -s ./build/$$i/$$i.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
-	done
-	cat $(sumlog)
+	@done
+	@printf "*******************\n      Summary\n*******************\n"
+	nl -nrz -w3 $(sumlog)
 
 clean:
 	rm -rf build
