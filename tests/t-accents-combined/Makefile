@@ -13,8 +13,8 @@ include ../global.Makefile
 	@du $@
 
 # -3- save version with -- make -f <test>.save
-%.ss: %.html .FORCE
-	cp $< $@
+%.ss: .FORCE
+	cp $f.html $@
 
 .PRECIOUS: %.html
 .PHONY: %.ss
