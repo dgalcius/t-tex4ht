@@ -5,16 +5,17 @@ include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
 %.html: %.tex .FORCE
+# do we need xelatex in TL2018? --deimi
 	htlatex $*
 
 #-2- compare result with pre-saved version. Diff file should be empty 
-%.diff: %.html %.ss
-	diff $^ > $@ || true
+%.diff: %.html
+	diff $< $f.ss > $@ || true
 	@du $@
 
 # -3- save version with -- make -f <test>.save
-%.ss: %.html .FORCE
-	cp $< $@
+%.ss: .FORCE
+	cp $f.html $@
 
 .PRECIOUS: %.html
 .PHONY: %.ss
