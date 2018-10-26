@@ -100,4 +100,4 @@ Saves the output produced in the _check_ stage as ~FOO.s~
   - GNU make (version 4.1)
   - GNU M4 macro processor (version 1.4). for Makefile templates
   - pandoc (version 2.3.1). For standalone html file generation. see ,e.g., t-suits, t-lettrine
-  - make4ht (version ??)
+  - make4ht (version v0.2b)
