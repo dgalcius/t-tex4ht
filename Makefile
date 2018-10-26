@@ -71,7 +71,7 @@ clean:
 
 new: $(unit).new
 
-%.new: t.Makefile
+%.new: tests/_template.Makefile
 	mkdir -p tests/$(unit)
 	m4 -DFILE=$* $< >tests/$(unit)/Makefile
 	touch tests/$(unit)/$*.ss
