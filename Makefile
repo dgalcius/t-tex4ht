@@ -26,6 +26,7 @@ sumlog=./build/summary.log
 # task - subfolder that starts with t-*
 
 
+DATE:=$(shell date +%Y-%m-%d)
 
 unit:=$(shell ls -d ./tests/t*/)
 unit:=$(unit:./tests/%/=%)
@@ -71,9 +72,10 @@ clean:
 
 new: $(unit).new
 
-%.new: tests/_template.Makefile
+%.new:
 	mkdir -p tests/$(unit)
-	m4 -DFILE=$* $< >tests/$(unit)/Makefile
+	m4 -DFILE=$* tests/_template.Makefile >tests/$(unit)/Makefile
+	m4 -DFILE=$* -DTODAY=$(DATE) tests/_template.tex >tests/$(unit)/$(unit).tex
 	touch tests/$(unit)/$*.ss
 
 
