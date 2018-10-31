@@ -26,6 +26,7 @@ new:
 clean:
 	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
 	rm -f *.css *.html *.lg
+	rm -rf *.bbl *.blg *.odt
 	rm -f *.png *.pdf
 	rm -f *.diff
 
