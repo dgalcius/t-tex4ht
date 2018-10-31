@@ -1,0 +1,21 @@
+% author:  Kirill Müller <muelleki>
+% date: 2018-10-31
+% issue: When converting to ODF using extra spaces appear
+%        after cross references (\ref{}) and citations (\cite{})
+% solution:
+% tex-sx:
+% bug: https://puszcza.gnu.org.ua/bugs/?172
+% comments:
+%%
+\documentclass{scrartcl}
+\pagestyle{empty}
+\bibliographystyle{plain}
+
+\begin{document}
+\section{First} \label{sec:first}
+Citation with surrounding en dashes: --\cite{test}--
+
+Reference with surrounding en dashes: --\ref{sec:first}--
+\bibliography{texput}
+\end{document}
+%
