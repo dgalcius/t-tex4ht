@@ -1,3 +1,4 @@
+oodiff=../../bin/oodiff
 
 file=t-172-oolatex-spaces
 
@@ -17,7 +18,7 @@ include ../global.Makefile
 
 #-2- compare result with pre-saved version. Diff file should be empty 
 %.diff: %.odt
-	diff $< $f.ss >$@ || true
+	$(oodiff)  $< $f.ss >$@ || true
 	@du $@
 
 ##-2.X- compare result with pre-saved version. Diff file should be empty
