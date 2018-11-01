@@ -45,7 +45,7 @@ This will create three files:
 ~./tests/FOO/FOO.ss~
 
 Go to ~./tests/FOO/~ folder.
-Put your LaTeX/TeX code in ~FOO.tex~ and amend metadata.
+Put your LaTeX/TeX code in ~FOO.tex~ and amend metadata. Describe your issue.
 Put your command line in  ~Makefile~. Default is ~htlatex $<~.
 
 Run:
@@ -64,6 +64,13 @@ make clean
 #+END_SRC
 to clean up build files. 
 
+If you run again:
+#+BEGIN_SRC sh
+make check clean
+#+END_SRC
+you should get SUCCESS. 
+
+If you are not able to get SUCCESS, please leave ~FOO.ss~ file empty.
 
 * Checking a unit
 
@@ -75,27 +82,32 @@ make check
 
 * Checking the bundle (all tests)
 
-Go to 
-
-#+BEGIN_SRC
+You can check all test by running
+#+BEGIN_SRC sh
 make check
 #+END_SRC
+at the top folder.
 
-
-* Saving
-
+Your should get a summary report like this:
 #+BEGIN_SRC 
-make FOO.save
+      Summary
+*******************
+001	SUCCESS (t-172-oolatex-spaces).
+002	SUCCESS (t-accents-combined).
+003	SUCCESS (t-accents-xelatex).
+004	SUCCESS (t-bmatrix).
+005	FAILURE (t-hello). See ./build/t-hello/t-hello.diff
+006	SUCCESS (t-lettrine).
+007	SUCCESS (t-mathml-array).
+008	SUCCESS (t-mwbk).
+009	SUCCESS (t-scrartcl).
+010	SUCCESS (t-scrbook-quoting).
+011	SUCCESS (t-suits).
 #+END_SRC
 
-or
 
-#+BEGIN_SRC
-make file=FOO save
-#+END_SRC
-
-
-Saves the output produced in the _check_ stage as ~FOO.s~
+All files from ~/tests/t-<something>~ are copied to ~/build~
+folder and command ~make check~ is run recursively.
 
 
 * t.Makefile template file
