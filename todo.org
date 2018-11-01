@@ -6,7 +6,6 @@
 
   #+BEGIN_SRC Makefile
   include ../global.Makefile
-
   #+END_SRC
 
 * TODO Testing setup
@@ -15,10 +14,10 @@
   - what to test: tex4ht styles, tex4ht driver, tex4ht postprocessor
   - how to test it each: styles, driver, postprocessor
 
-
 * TODO Examples needed
-
-
+  1. to test style
+  2. to test driver
+  3. to test postprocessor
 
 * DONE Metadata should go into Test summary report?
 
