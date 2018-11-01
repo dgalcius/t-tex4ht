@@ -1,0 +1,183 @@
+#! /bin/bash
+#
+#   Modified by Deimantas Galcius <deimantas.galcius@gmail.com>
+#      - odt2txt replace by unzip + diffing folder recursively
+#
+#   Copyright
+#
+#       Copyright (C) 2013 Francesco Pizzolante <fpz@missioncriticalit.com>
+#       Copyright (C) 2009-2010 Jari Aalto <jari.aalto@cante.net>
+#       Copyright (C) 2008 Matthieu Moy <Matthieu.Moy@imag.fr>
+#
+#   License
+#
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#       GNU General Public License for more details
+#       at <http://www.gnu.org/licenses/>.
+
+[ "$debug" ] && set -x
+
+PROGRAM=$(basename $0)
+prg=diff
+
+if [ -x /opt/csw/bin/gdiff ]; then 			# SUN/OS Solaris
+    prg=/opt/csw/bin/gdiff
+fi
+
+DIFF_PROGRAM=${DIFF_PROGRAM:-$prg}
+
+Warn ()
+{
+    echo "$*" >&2
+}
+
+Die ()
+{
+    Warn "$PROGRAM: [ERROR] $*"
+    exit 1
+}
+
+usage ()
+{
+    echo "\
+NAME
+    $PROGRAM - Diff Open Document files
+
+SYNOPSIS
+    [debug=1] $PROGRAM [options] FILE1 FILE2
+
+DESCRIPTION
+   Show difference of openoffice documents as plain text ASCII.
+   Requires odt2txt to be installed.
+
+OPTIONS
+    Options are same as in diff(1) command.
+
+    If variable 'debug' exists in environment, the program is run
+    with shell \"set -x\" option.
+
+EXAMPLES
+
+    To use form command line:
+
+        oodiff file-v1.odt file-v2.odt
+
+    To use from Git:
+
+        [debug=1] GIT_EXTERNAL_DIFF=oodiff git diff file.odt
+
+    To use from Subversion:
+        svn diff --diff-cmd=oodiff --force file.odt
+
+AUTHORS
+    Original author is Matthieu Moy <Matthieu.Moy@imag.fr>
+    Major cleanup by Jari Aalto <jari.aalto@cante.net>
+    Adapt in order to be used with --diff-cmd option of svn by Francesco Pizzolante <fpz@missioncriticalit.com>
+
+AVAILABILITY
+    http://www-verimag.imag.fr/~moy/opendocument/
+
+COPYRIGHT
+
+    License GPL-2+: GNU GPL version 2 or later
+    <http://gnu.org/licenses/gpl.html>. This is free software: you
+    are free to change and redistribute it. There is NO WARRANTY,
+    to the extent permitted by law.
+
+SEE ALSO
+    odt2txt(1)"
+}
+
+clean_up ()
+{
+    [ "$ft1" ] && rm -rf "$ft1"
+    [ "$ft2" ] && rm -rf "$ft2"
+}
+
+Main ()
+{
+    file1=""
+    file2=""
+
+    while test $# -ne 0; do
+        case "$1" in
+            --help|-h)
+                usage
+                exit 0
+                ;;
+            -L)
+                if [ ! "$label1" ]; then
+                    shift
+                    label1=$1
+                elif [ ! "$label2" ]; then
+                    shift
+                    label2=$1
+                else
+                    usage
+                    exit 1
+                fi
+                ;;
+            -w)
+                if [ "$opts" != "*-u*" ]; then
+                    opts="$opts -u"
+                fi
+                ;;
+            -*)
+                opts="$opts $1"
+                ;;
+            *)
+                if [ ! "$file1" ]; then
+                    file1=$1
+                elif [ ! "$file2" ]; then
+                    file2=$1
+                else
+                    usage
+                    exit 1
+                fi
+                ;;
+        esac
+        shift
+    done
+
+    if [ ! "$file1" ]; then
+        Die "missing FILE1 and FILE2 argument."
+    fi
+
+    if [ ! "$file2" ]; then
+        Die "missing FILE2 argument."
+    fi
+
+    if [ ! "$label1" ]; then
+        label1=$file1
+    fi
+
+    if [ ! "$label2" ]; then
+        label1=$file2
+    fi
+
+    ft1=$(mktemp -d /tmp/oodiff.$$.1.XXXXXXXXXX) \
+        || ft1="/tmp/oodiff.$$.1"
+
+    ft2=$(mktemp -d /tmp/oodiff.$$.2.XXXXXXXXXX) \
+        || ft2="/tmp/oodiff.$$.2"
+
+    trap 'clean_up; exit 0' 1 2 3 15
+
+    unzip "$file1" -d "$ft1" 1>/dev/null
+    unzip "$file2" -d "$ft2" 1>/dev/null
+
+    $DIFF_PROGRAM -L "$file1" -L "$file2" -ar $opts "$ft1" "$ft2"
+
+    clean_up
+}
+
+Main "$@"
+
+# End of file
