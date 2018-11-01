@@ -8,14 +8,14 @@ include ../global.Makefile
 	htlatex $*
 
 #-2- compare result with pre-saved version. Diff file should be empty 
-%.diff: %.html %.s
-	diff $^ > $@ || true
+%.diff: %.html
+	diff $< $f.ss > $@ || true
 	@du $@
 
 # -3- save version with -- make -f <test>.save
-%.s: %.html .FORCE
-	cp $< $@
+%.ss: .FORCE
+	cp $f.html $@
 
 .PRECIOUS: %.html
-.PHONY: %.s
+.PHONY: %.ss
 .FORCE:
