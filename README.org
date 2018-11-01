@@ -1,5 +1,6 @@
 #+TITLE: tex4ht regression tests
 
+* Basics
 A unit consists of three main files:
 
 - ~foo.tex~
@@ -32,38 +33,49 @@ A unit consists of three main files:
 
 * Setting new unit test
 
-0. save your MWE ~.tex~ file as ~FOO.tex~
-
-1. create ~Makefile~ from ~t.Makefile~ template
-   and ~FOO.ss~ -- empty
+Run in shell:
 
 #+BEGIN_SRC 
-make FOO.new
+make unit=FOO new
 #+END_SRC
-or
+ 
+This will create three files:
+~./tests/FOO/Makefile~
+~./tests/FOO/FOO.tex~
+~./tests/FOO/FOO.ss~
+
+Go to ~./tests/FOO/~ folder.
+Put your LaTeX/TeX code in ~FOO.tex~ and amend metadata.
+Put your command line in  ~Makefile~. Default is ~htlatex $<~.
+
+Run:
+#+BEGIN_SRC sh
+make check
+#+END_SRC
+This will create your html(or other) file(s) and *.diff file.
+Initially you should get FAILURE. When you get correct HTML results, issue command:
+#+BEGIN_SRC sh
+make save
+#+END_SRC
+This will pre-save your result HTML file with ~*.ss~ extension. 
+Run:
+#+BEGIN_SRC sh
+make clean
+#+END_SRC
+to clean up build files. 
+
+
+* Checking a unit
+
+Go to a unit test folder under ~./tests/FOO/~. Run
+
 #+BEGIN_SRC
-make file=FOO new
+make check
 #+END_SRC
 
+* Checking the bundle (all tests)
 
-Amend ~Makefile~. Requires ~GNU M4 macro~ processor.
-
-* Checking 
-
-#+BEGIN_SRC 
-make FOO.check
-#+END_SRC
-
-or
-
-#+BEGIN_SRC
-make unit=FOO check
-#+END_SRC
-
-This stage copies ~FOO.*~ files to ./build folder, runs ~make -f FOO.Makefile~,
-which produces ~FOO.diff~ file. Empty ~diff~ file is /SUCCESS/, non-empty -- /FAILURE/
-
-Checking all the bundle:
+Go to 
 
 #+BEGIN_SRC
 make check
