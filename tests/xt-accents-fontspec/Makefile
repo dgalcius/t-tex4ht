@@ -5,7 +5,8 @@ include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
 %.html: %.tex .FORCE
-	htlatex $*
+#	htlatex $*
+	make4ht --lua $*
 
 #-2- compare result with pre-saved version. Diff file should be empty 
 %.diff: %.html
@@ -16,6 +17,3 @@ include ../global.Makefile
 %.ss: .FORCE
 	cp $f.html $@
 
-.PRECIOUS: %.html
-.PHONY: %.ss
-.FORCE:
