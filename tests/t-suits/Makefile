@@ -19,5 +19,3 @@ output.html: $f.html .FORCE
 %.ss: .FORCE
 	cp output.html $@
 
-
-

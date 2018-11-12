@@ -15,5 +15,3 @@ include ../global.Makefile
 %.ss: .FORCE
 	cp $f.html $@
 
-
-

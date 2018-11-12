@@ -1,9 +1,7 @@
 
 file=t-lettrine
-f=$(file)
 
 include ../global.Makefile
-
 
 html: $f.html
 
@@ -13,8 +11,6 @@ html: $f.html
 
 #-2- produce standalone html file
 output.html: $f.html .FORCE
-#	pandoc -f html-native_divs-native_spans  --include-in-header=$f.css -o $@ $<
-#	pandoc -s --self-contained  -o $@ $<
 	pandoc --quiet -s --self-contained --css=$f.css -o $@ $<
 
 #-3- compare result with pre-saved version. Diff file should be empty 
