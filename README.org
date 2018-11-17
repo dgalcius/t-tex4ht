@@ -1,6 +1,7 @@
 #+TITLE: tex4ht regression tests
 
 * Basics
+
 A unit consists of three main files:
 
 - ~foo.tex~
@@ -22,14 +23,13 @@ A unit consists of three main files:
 
   Define rules:
   1. how to produce results
-  2. how to compare results
+  2. how to compare results with pre-saved version
   3. how to make pre-saved version
 
   Common targets:
   1. %.html - generate results
   2. %.diff - generate diff file
   3. %.ss   - presave file
-
 
 * Setting new unit test
 
@@ -38,13 +38,13 @@ Run in shell:
 #+BEGIN_SRC 
 make unit=FOO new
 #+END_SRC
- 
+
 This will create three files:
 ~./tests/FOO/Makefile~
 ~./tests/FOO/FOO.tex~
 ~./tests/FOO/FOO.ss~
 
-Go to ~./tests/FOO/~ folder.
+Change directory to ~./tests/FOO/~.
 Put your LaTeX/TeX code in ~FOO.tex~ and amend metadata. Describe your issue.
 Put your command line in  ~Makefile~. Default is ~htlatex $<~.
 
@@ -53,7 +53,7 @@ Run:
 make check
 #+END_SRC
 This will create your html(or other) file(s) and *.diff file.
-Initially you should get FAILURE. When you get correct HTML results, issue command:
+Initially you should get FAILURE. When you get correct results, issue command:
 #+BEGIN_SRC sh
 make save
 #+END_SRC
@@ -70,15 +70,16 @@ make check clean
 #+END_SRC
 you should get SUCCESS. 
 
-If you are not able to get SUCCESS, please leave ~FOO.ss~ file empty.
+Leave ~FOO.ss~ file empty, if you are not able to get SUCCESS.
 
 * Checking a unit
 
-Go to a unit test folder under ~./tests/FOO/~. Run
+Change directory to a unit test folder  ~./tests/FOO/~. Run
 
 #+BEGIN_SRC
 make check
 #+END_SRC
+
 
 * Checking the bundle (all tests)
 
@@ -110,18 +111,19 @@ All files from ~/tests/t-<something>~ are copied to ~/build~
 folder and command ~make check~ is run recursively.
 
 
-* t.Makefile template file
+* Template files
   
-  This file is a template for ~FOO.Makefile~ generation.
+  There are two template files:
+  - ~_template.Makefile~
+  - ~_template.tex~
 
-  Variables: ~FILE~
+  Variables: ~FILE~, ~TODAY~
 
   Needs GNU M4 macro processor.
-
 
 * External dependencies
 
   - GNU make (version 4.1)
   - GNU M4 macro processor (version 1.4). for Makefile templates
-  - pandoc (version 2.3.1). For standalone html file generation. see ,e.g., t-suits, t-lettrine
+  - pandoc (version 2.3.1). For standalone html file generation. see, e.g., t-suits, t-lettrine
   - make4ht (version v0.2b)
