@@ -1,6 +1,6 @@
 #+TITLE: todo notes
 
-* DONE Spit Makefile into 2 parts (if possible): common and test-specific
+* DONE Split Makefile into 2 parts (if possible): common and unit-test-specific
 
   Use ~include~ directive for reading another Makefile
 

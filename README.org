@@ -90,6 +90,7 @@ make check
 at the top folder.
 
 Your should get a summary report like this:
+(./build/summary.log)
 #+BEGIN_SRC 
       Summary
 *******************
