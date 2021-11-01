@@ -1,6 +1,6 @@
 ###SHELL=/bin/bash
 
-f=$(file)
+f = test
 
 color-red=tput setaf 1; tput bold;
 color-green=tput setaf 2; tput bold;
@@ -24,11 +24,11 @@ new:
 	touch $f.ss
 
 clean:
-	rm -f *.4* *.aux *.dvi *.idv *.log *.tmp *.xref
-	rm -f *.css *.html *.lg
-	rm -rf *.bbl *.blg *.odt
-	rm -f *.png *.pdf
-	rm -f *.diff
+	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref
+	rm -f $f.css $f.html $f.lg
+	rm -rf $f.bbl $f.blg $f.odt
+	rm -f $f.png $f.pdf
+	rm -f $f.diff
 
 .PRECIOUS: %.html
 .PHONY: %.ss

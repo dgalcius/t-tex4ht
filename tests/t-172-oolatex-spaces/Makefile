@@ -1,7 +1,5 @@
 oodiff=../../bin/oodiff
 
-file=t-172-oolatex-spaces
-
 include ../global.Makefile
 
 #-1- produce html (xml, png or whatever)
@@ -10,14 +8,14 @@ include ../global.Makefile
 	bibtex $*
 	mk4ht oolatex $< "xhtml,ooffice,bib-,hidden-ref"
 
-#-2- compare result with pre-saved version. Diff file should be empty 
-%.diff: %.odt
-	$(oodiff)  $< $f.ss >$@ || true
+#-2- compare result with pre-saved version. Diff file should be empty
+%.diff: %.odt %.ss.odt
+	$(oodiff)  $^ >$@ || true
 	@du $@
 
 # -3- save version with -- make -f <test>.save
-%.ss: .FORCE
-	cp $f.odt $@
+%ss:
+	cp $f.odt $f.ss.odt
 
 .PRECIOUS: %.odt
 .PHONY: %.ss
