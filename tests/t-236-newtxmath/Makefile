@@ -1,18 +1,6 @@
 
 include ../global.Makefile
 
-%.pdf: %.ps
-	ps2pdf $<
-
-%.ps: %.dvi
-	dvips -j0 $<
-
-%.dvi: %.tex .FORCE
-	latex -recorder $<
-
-pdf: $f.pdf
-html: $f.html
-
 %.html: %.tex .FORCE
 	htlatex $f.tex "nma.cfg,charset=utf-8" " -cunihtf -utf8"
 	tidy -m -i $@

@@ -30,6 +30,19 @@ clean:
 	rm -f $f.png $f.pdf
 	rm -f $f.diff
 
+# shotcuts
+pdf: $f.pdf
+html: $f.html
+
+%.pdf: %.ps
+	ps2pdf $<
+
+%.ps: %.dvi
+	dvips -j0 $<
+
+%.dvi: %.tex .FORCE
+	latex -recorder $<
+
 .PRECIOUS: %.html
 .PHONY: %.ss
 .FORCE:
