@@ -1,4 +1,4 @@
-# make check 
+# make check
 # make test=t-hello check
 # make test=t-hello save
 SHELL=/bin/bash
@@ -10,14 +10,14 @@ color-pop=tput sgr0 #
 FAILURE_=$(color-red)   printf "FAILURE " >> $(sumlog) ; $(color-pop);
 SUCCESS_=$(color-green) printf "SUCCESS " >> $(sumlog) ; $(color-pop);
 
-FAILURE=$(FAILURE_) echo \($$i\). See ./build/$$i/$$i.diff >> $(sumlog)
-SUCCESS=$(SUCCESS_)  echo \($$i\). >> $(sumlog)
+FAILURE=$(FAILURE_) echo \(test=*$$i*\). See ./build/$$i/$$i.diff >> $(sumlog)
+SUCCESS=$(SUCCESS_)  echo \(test=*$$i*\). >> $(sumlog)
 
 sumlog=./build/summary.log
 
 # 3 files are needed for a test unit:
 # (1) *.tex    - input file
-# (2) *.s      - presaved output file. Most like it will be html/xml, 
+# (2) *.s      - presaved output file. Most like it will be html/xml,
 #                but can be binary format too, e.g., png.
 # (3) Makefile - rules how to produce output format.
 #                  At least two targets needed:
@@ -25,19 +25,16 @@ sumlog=./build/summary.log
 #                  Another for diffing results.
 # task - subfolder that starts with t-*
 
-
 DATE:=$(shell date +%Y-%m-%d)
 
-unit:=$(shell ls -d ./tests/t*/)
-unit:=$(unit:./tests/%/=%)
+test:=$(shell ls -d ./tests/t*/)
+test:=$(test:./tests/%/=%)
 
 default:
 	@printf "$$ make check             *check all units*\n"
 	@printf "$$ make unit=FOO check    *check single unit FOO*\n"
 	@printf "$$ make unit=FOO save     *pre-save single unit FOO*\n"
 	@printf "$$ make unit=FOO new      *new bare-bone unit-test ./tests/FOO/*\n"
-
-
 
 .ONESHELL:
 check: check.pre check.units check.post
@@ -51,7 +48,7 @@ check.pre:
 ## run tests
 .ONESHELL:
 check.units:
-	for i in $(unit); do
+	for i in $(test); do
 		echo $$i;
 		make -C build/$$i check
 	done
@@ -60,7 +57,7 @@ check.units:
 .ONESHELL:
 check.post:
 	@clear
-	@for i in $(unit); do
+	@for i in $(test); do
 		@if [[ ! -e ./build/$$i/$$i.diff || -s ./build/$$i/$$i.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
 	@done
 	@printf "*******************\n      Summary\n*******************\n"
@@ -69,13 +66,11 @@ check.post:
 clean:
 	rm -rf build
 
-
-new: $(unit).new
+new: $(test).new
 
 %.new:
-	mkdir -p tests/$(unit)
-	m4 -DFILE=$* tests/_template.Makefile >tests/$(unit)/Makefile
-	m4 -DFILE=$* -DTODAY=$(DATE) -DAUTHOR=$(USER) tests/_template.tex >tests/$(unit)/$(unit).tex
-	touch tests/$(unit)/$*.ss
-
+	mkdir -p tests/$(test)
+	m4 -DFILE=$* tests/_template.Makefile >tests/$(test)/Makefile
+	m4 -DFILE=$* -DTODAY=$(DATE) -DAUTHOR=$(USER) tests/_template.tex >tests/$(test)/$(test).tex
+	touch tests/$(test)/$*.ss
 
