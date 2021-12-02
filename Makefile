@@ -10,8 +10,8 @@ color-pop=tput sgr0 #
 FAILURE_=$(color-red)   printf "FAILURE " >> $(sumlog) ; $(color-pop);
 SUCCESS_=$(color-green) printf "SUCCESS " >> $(sumlog) ; $(color-pop);
 
-FAILURE=$(FAILURE_) echo \(test=*$$i*\). See ./build/$$i/$$i.diff >> $(sumlog)
-SUCCESS=$(SUCCESS_)  echo \(test=*$$i*\). >> $(sumlog)
+FAILURE=$(FAILURE_) echo \(*** $$i ***\). See ./build/$$i/test.diff >> $(sumlog)
+SUCCESS=$(SUCCESS_)  echo \(*** $$i ***\). >> $(sumlog)
 
 sumlog=./build/summary.log
 
@@ -58,7 +58,7 @@ check.units:
 check.post:
 	@clear
 	@for i in $(test); do
-		@if [[ ! -e ./build/$$i/$$i.diff || -s ./build/$$i/$$i.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
+		@if [[ ! -e ./build/$$i/test.diff || -s ./build/$$i/test.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
 	@done
 	@printf "*******************\n      Summary\n*******************\n"
 	nl -nrz -w3 $(sumlog)
