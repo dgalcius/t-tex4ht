@@ -3,14 +3,14 @@ include ../global.Makefile
 
 %.html: %.tex .FORCE
 	htlatex $f.tex "nma.cfg,charset=utf-8" " -cunihtf -utf8"
-	tidy -m -i $@
+	tidy -modify -indent -quiet $@
 
-%.diff: %.html
-	diff $< $f.ss.html >$@ || true
+%.diff: %.html %.ss.html
+	diff $^ >$@ || true
 	@du $@
 
 # save
-%.ss: .FORCE
+%.ss:
 	cp $f.html $f.ss.html
 
 .PRECIOUS: %.html
