@@ -3,15 +3,16 @@
 # make test=t-hello save
 SHELL=/bin/bash
 
-color-red=tput setaf 1; tput bold;
-color-green=tput setaf 2; tput bold;
-color-pop=tput sgr0 #
+color-red=\e[1;31m
+color-green=\e[1;32m
+color-blue=\e[1;36m
+color-pop=\e[0m
 
-FAILURE_=$(color-red)   printf "FAILURE " >> $(sumlog) ; $(color-pop);
-SUCCESS_=$(color-green) printf "SUCCESS " >> $(sumlog) ; $(color-pop);
+FAILURE_=$(color-red)FAILURE$(color-pop)
+SUCCESS_=$(color-green)SUCCESS$(color-pop)
 
-FAILURE=$(FAILURE_) echo \(*** $$i ***\). See ./build/$$i/test.diff >> $(sumlog)
-SUCCESS=$(SUCCESS_)  echo \(*** $$i ***\). >> $(sumlog)
+FAILURE=printf "$(FAILURE_) (*** $$i ***). See ./build/$$i/test.diff \n">> $(sumlog)
+SUCCESS=printf "$(SUCCESS_) (*** $$i ***). \n">> $(sumlog)
 
 sumlog=./build/summary.log
 
@@ -73,4 +74,3 @@ new: $(test).new
 	m4 -DFILE=$* tests/_template.Makefile >tests/$(test)/Makefile
 	m4 -DFILE=$* -DTODAY=$(DATE) -DAUTHOR=$(USER) tests/_template.tex >tests/$(test)/$(test).tex
 	touch tests/$(test)/$*.ss
-
