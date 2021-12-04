@@ -1,0 +1,31 @@
+% author: deimi
+% date: 2021-12-04
+% issue:
+%   A document using abnt style for biblatex and also including hyperref
+%    packages leads to an error when compiling make4ht
+% solution:
+% tex-sx: https://tex.stackexchange.com/q/619550
+% bug: https://puszcza.gnu.org.ua/bugs/?534
+% comments:
+%%
+\documentclass{article}
+\begin{filecontents*}[overwrite]{test.bib}
+@book{knuth1986,
+  address = {Reading, Mass},
+  series = {Computers \& typesetting},
+  title = {The {TeXbook}},
+  isbn = {9780201134476 9780201134483},
+  number = {A},
+  publisher = {Addison-Wesley},
+  author = {Knuth, Donald Ervin and Knuth, Donald Ervin},
+  year = {1986},
+  keywords = {TeX (Computer file), Computerized typesetting, Mathematics printing, Computer programs},
+}
+\end{filecontents*}
+\usepackage[backend=biber,style=abnt]{biblatex}
+\addbibresource{test.bib}
+\usepackage{hyperref}
+\begin{document}
+Test \cite{knuth1986}.
+\printbibliography
+\end{document}
