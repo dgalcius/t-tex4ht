@@ -72,5 +72,5 @@ new: $(test).new
 %.new:
 	mkdir -p tests/$(test)
 	m4 -DFILE=$* tests/_template.Makefile >tests/$(test)/Makefile
-	m4 -DFILE=$* -DTODAY=$(DATE) -DAUTHOR=$(USER) tests/_template.tex >tests/$(test)/$(test).tex
-	touch tests/$(test)/$*.ss
+	m4 -DFILE=$* -DTODAY=$(DATE) -DAUTHOR=$(USER) tests/_template.tex >tests/$(test)/test.tex
+	touch tests/$(test)/test.ss

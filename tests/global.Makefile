@@ -34,6 +34,7 @@ clean:
 # shotcuts
 pdf: $f.pdf
 html: $f.html
+odt: $f.odt
 
 %.pdf: %.ps
 	ps2pdf $<
