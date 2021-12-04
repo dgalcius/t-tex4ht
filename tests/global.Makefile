@@ -27,8 +27,9 @@ clean:
 	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref $f.fls
 	rm -f $f.css $f.html $f.lg
 	rm -rf $f.bbl $f.blg $f.odt
-	rm -f $f.png $f.pdf
+	rm -f $f*.png $f.pdf
 	rm -f $f.diff
+	rm -f temp.*
 
 # shotcuts
 pdf: $f.pdf
