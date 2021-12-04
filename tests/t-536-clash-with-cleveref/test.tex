@@ -1,0 +1,28 @@
+% author: deimi
+% date: 2021-12-04
+% issue: conflict between hyperref and cleveref;
+%        Compiling with make4ht, I get errors
+%        A workaround is to remove \usepackage{hyperref} which does not seem to affect the html
+%        output. However, I wonder why they are conflict under tex4ht and a better solution for that.
+% solution:
+%         ???
+% tex-sx: https://tex.stackexchange.com/q/623351/2891
+% bug: https://puszcza.gnu.org.ua/bugs/?536
+% comments:
+%%
+\documentclass{amsart}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\begin{theorem}
+  \label{test}
+  This is a theorem.
+\end{theorem}
+
+Look at \Cref{test}.
+
+\end{document}
