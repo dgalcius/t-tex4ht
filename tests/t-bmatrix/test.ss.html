@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>temp</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css"> 
+.cmmi-10{font-style: italic;}
+.cmtt-10{font-family: monospace,monospace;}
+p{margin-top:0;margin-bottom:0}
+p.indent{text-indent:0;}
+p + p{margin-top:1em;}
+p + div, p + pre {margin-top:1em;}
+div + p, pre + p {margin-top:1em;}
+a { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; }
+@media print {div.crosslinks {visibility:hidden;}}
+table.tabular{border-collapse: collapse; border-spacing: 0;}
+a img { border-top: 0; border-left: 0; border-right: 0; }
+center { margin-top:1em; margin-bottom:1em; }
+td center { margin-top:0em; margin-bottom:0em; }
+.Canvas { position:relative; }
+img.math{vertical-align:middle;}
+div.par-math-display, div.math-display{text-align:center;}
+li p.indent { text-indent: 0em }
+li p:first-child{ margin-top:0em; }
+li p:last-child, li div:last-child { margin-bottom:0.5em; }
+li p:first-child{ margin-bottom:0; }
+li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }
+.enumerate1 {list-style-type:decimal;}
+.enumerate2 {list-style-type:lower-alpha;}
+.enumerate3 {list-style-type:lower-roman;}
+.enumerate4 {list-style-type:upper-alpha;}
+div.newtheorem { margin-bottom: 2em; margin-top: 2em;}
+div.newtheorem .head{font-weight: bold;}
+.obeylines-h,.obeylines-v {white-space: nowrap; }
+div.obeylines-v p { margin-top:0; margin-bottom:0; }
+.overline{ text-decoration:overline; }
+.overline img{ border-top: 1px solid black; }
+td.displaylines {text-align:center; white-space:nowrap;}
+.centerline {text-align:center;}
+.rightline {text-align:right;}
+pre.verbatim {font-family: monospace,monospace; text-align:left; clear:both; }
+.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+div.fbox {display:table}
+div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+div.minipage{width:100%;}
+div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
+div.center div {text-align: left;}
+div.flushright, div.flushright div.flushright {text-align: right;}
+div.flushright div {text-align: left;}
+div.flushleft {text-align: left;}
+.underline{ text-decoration:underline; }
+.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }
+.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
+.framebox-c {text-align:center;}
+.framebox-l {text-align:left;}
+.framebox-r {text-align:right;}
+span.thank-mark{ vertical-align: super }
+span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+table.tabular td p{margin-top:0em;}
+table.tabular {margin-left: auto; margin-right: auto;}
+td p:first-child{ margin-top:0em; }
+td p:last-child{ margin-bottom:0em; }
+div.td00{ margin-left:0pt; margin-right:0pt; }
+div.td01{ margin-left:0pt; margin-right:5pt; }
+div.td10{ margin-left:5pt; margin-right:0pt; }
+div.td11{ margin-left:5pt; margin-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+td.td00{ padding-left:0pt; padding-right:0pt; }
+td.td01{ padding-left:0pt; padding-right:5pt; }
+td.td10{ padding-left:5pt; padding-right:0pt; }
+td.td11{ padding-left:5pt; padding-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+.hline hr, .cline hr{ height : 0px; margin:0px; }
+.hline td, .cline td{ padding: 0; }
+.hline hr, .cline hr{border:none;border-top:1px solid black;}
+.hline {border-top: 1px solid black;}
+.tabbing-right {text-align:right;}
+div.float, div.figure {margin-left: auto; margin-right: auto;}
+div.float img {text-align:center;}
+div.figure img {text-align:center;}
+.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
+.marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
+.reversemarginpar{float:left;}
+table.equation {width:100%;}
+.equation td{text-align:center; }
+td.equation { margin-top:1em; margin-bottom:1em; } td.equation-label { width:5%; text-align:center; }
+td.eqnarray4 { width:5%; white-space: normal; }
+td.eqnarray2 { width:5%; }
+table.eqnarray-star, table.eqnarray {width:100%;}
+div.eqnarray{text-align:center;}
+div.array {text-align:center;}
+div.pmatrix {text-align:center;}
+table.pmatrix {width:100%;}
+span.pmatrix img{vertical-align:middle;}
+div.pmatrix {text-align:center;}
+table.pmatrix {width:100%;}
+span.bar-css {text-decoration:overline;}
+img.cdots{vertical-align:middle;}
+.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
+.index-item, .index-subitem, .index-subsubitem {display:block}
+div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
+div.caption span.id{font-weight: bold; white-space: nowrap; }
+h1.partHead{text-align: center}
+p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
+.subparagraphHead, .likesubparagraphHead { font-weight: bold;}
+.verse{white-space:nowrap; margin-left:2em}
+div.maketitle {text-align:center;}
+h2.titleHead{text-align:center;}
+div.maketitle{ margin-bottom: 2em; }
+div.author, div.date {text-align:center;}
+div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+div.author{white-space: nowrap;}
+h1.partHead{text-align: center}
+.chapterToc, .likechapterToc {margin-left:0em;}
+.chapterToc ~ .likesectionToc, .chapterToc ~ .sectionToc, .likechapterToc ~ .likesectionToc, .likechapterToc ~ .sectionToc {margin-left:2em;}
+.chapterToc ~ .likesectionToc ~ .likesubsectionToc, .chapterToc ~ .likesectionToc ~ .subsectionToc, .chapterToc ~ .sectionToc ~ .likesubsectionToc, .chapterToc ~ .sectionToc ~ .subsectionToc, .likechapterToc ~ .likesectionToc ~ .likesubsectionToc, .likechapterToc ~ .likesectionToc ~ .subsectionToc, .likechapterToc ~ .sectionToc ~ .likesubsectionToc, .likechapterToc ~ .sectionToc ~ .subsectionToc {margin-left:4em;}
+.chapterToc ~ .likesectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .chapterToc ~ .likesectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .chapterToc ~ .likesectionToc ~ .subsectionToc ~ .likesubsubsectionToc, .chapterToc ~ .likesectionToc ~ .subsectionToc ~ .subsubsectionToc, .chapterToc ~ .sectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .chapterToc ~ .sectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .chapterToc ~ .sectionToc ~ .subsectionToc ~ .likesubsubsectionToc, .chapterToc ~ .sectionToc ~ .subsectionToc ~ .subsubsectionToc, .likechapterToc ~ .likesectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .likechapterToc ~ .likesectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .likechapterToc ~ .likesectionToc ~ .subsectionToc ~ .likesubsubsectionToc, .likechapterToc ~ .likesectionToc ~ .subsectionToc ~ .subsubsectionToc, .likechapterToc ~ .sectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .likechapterToc ~ .sectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .likechapterToc ~ .sectionToc ~ .subsectionToc ~ .likesubsubsectionToc .likechapterToc ~ .sectionToc ~ .subsectionToc ~ .subsubsectionToc {margin-left:6em;}
+.likesectionToc , .sectionToc {margin-left:0em;}
+.likesectionToc ~ .likesubsectionToc, .likesectionToc ~ .subsectionToc, .sectionToc ~ .likesubsectionToc, .sectionToc ~ .subsectionToc {margin-left:2em;}
+.likesectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .likesectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .likesectionToc ~ .subsectionToc ~ .likesubsubsectionToc, .likesectionToc ~ .subsectionToc ~ .subsubsectionToc, .sectionToc ~ .likesubsectionToc ~ .likesubsubsectionToc, .sectionToc ~ .likesubsectionToc ~ .subsubsectionToc, .sectionToc ~ .subsectionToc ~ .likesubsubsectionToc, .sectionToc ~ .subsectionToc ~ .subsubsectionToc {margin-left:4em;}
+.likesubsectionToc, .subsectionToc {margin-left:0em;}
+.likesubsectionToc ~ .subsubsectionToc, .subsectionToc ~ .subsubsectionToc {margin-left:2em;}
+.poemtitle, likepoemtitle {margin-left:2em; margin-bottom:0.5em;}
+.skip-verseline {margin-top: 1em;}
+.skip-verseline, .verseline {white-space: nowrap;}
+.flagverse {float:right; font-size:85%; text-decoration:underline;}
+.verse p{margin-bottom:0;}
+.poemline {text-align:right; width:6em;}
+.booknumber{display:block;}
+div.abstract p {margin-left:5%; margin-right:5%;}
+div.abstract {width:100%;}
+.abstracttitle{text-align:center;margin-bottom:1em;}
+div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
+table.tabular td p{margin-top:0em;}
+table.tabular {margin-left: auto; margin-right: auto;}
+td p:first-child{ margin-top:0em; }
+td p:last-child{ margin-bottom:0em; }
+div.td00{ margin-left:0pt; margin-right:0pt; }
+div.td01{ margin-left:0pt; margin-right:5pt; }
+div.td10{ margin-left:5pt; margin-right:0pt; }
+div.td11{ margin-left:5pt; margin-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+td.td00{ padding-left:0pt; padding-right:0pt; }
+td.td01{ padding-left:0pt; padding-right:5pt; }
+td.td10{ padding-left:5pt; padding-right:0pt; }
+td.td11{ padding-left:5pt; padding-right:5pt; }
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
+.hline hr, .cline hr{ height : 0px; margin:0px; }
+.hline td, .cline td{ padding: 0; }
+.hline hr, .cline hr{border:none;border-top:1px solid black;}
+.hline {border-top: 1px solid black;}
+div.array {text-align:center;}
+.equation td{text-align:center; }
+.equation-star td{text-align:center; }
+table.equation-star { width:100%; }
+table.equation { width:100%; }
+table.align, table.alignat, table.xalignat, table.xxalignat, table.flalign {width:95%; margin-left:5%; white-space: nowrap;}
+table.align-star, table.alignat-star, table.xalignat-star, table.flalign-star {margin-left:auto; margin-right:auto; white-space: nowrap;}
+td.align-label { width:5%; text-align:center; }
+td.align-odd { text-align:right; padding-right:0.3em;}
+td.align-even { text-align:left; padding-right:0.6em;}
+table.multline, table.multline-star {width:100%;}
+td.gather {text-align:center; }
+table.gather {width:100%;}
+div.gather-star {text-align:center;}
+
+</style>
+</head>
+<body>
+<p>Arrays of mathematics are typeset using one of the matrix environments as in</p>
+<div class="math-display">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAABHCAMAAADfhmk0AAAAPFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAo1xBWAAAAE3RSTlMAEDIiVLuZ3e+rdolmzUTJ+9f3mD8lCQAAAAlwSFlzAAAOxAAADsQBlSsOGwAABSBJREFUeAHtXNuCqyoMxVqxau0+Z/v//7ohCqwE7HhtO1UfRm4mi0WCIeOMUq++mo6uLOgtqaENDd9dam5Xe8Ekqd4eh4AyzP1a+LI+HgG51mUg44AEmMXXJwFHdoHTAk4XOPeAcxP8hLdAZi+/GW9cSAhvwqSXuEBC4gzMqacpEL/MEDJnaGGlN+yJlQSsg5vAozoGb4eK3paA1QgFHiAAIvOlWjJdN1o4lFCIFlDcvKKpoXBYr6VwBR5HAI/MPa6ZhdL40kMca4RCT0Cmq1tX6MH7ZhKwAq7A4wgwM4WX0sx5u+E1ne7Ku6vTXSj0BLBBaiYB5uEIbs4ljtUEnk0JaMndq3DItSCEwv0IqKYxIPBsSkC/4TfBT7+HgLyutbrWcoPjZpZ3tW1oOrYNCsZfZgEBcnbXD4PrQeikRU6zgMzYdqUv2Y27N5+/unTU/RkEAORG0eZUaMIrFmQaAbVZ06pVecXWVsw/EMCcUSh8lQUEyI+HKiqDtesTkQLPNALsjEoe0MjZm/rgAvojXCBAzlTWGRd4DLAWEUCz+zFezvo9oHr5Jqhbe91KugXzy7sB8t0GXM70lhJAQoLwhAEo1ZKXFZ/yGvSQK+sBPbjotTzJBTLzim3ttH7wgpqCwLLfbR1FgnG3EK57uG8QCLE4gEEmRMMW8OQtAJG5QHe95ReLsHm6B5qHKBSG866VsxcBEVxGAINcmYXz7yaBx1kAj8wFAZm+31VT1z94gFLmMBTFCkLhNhaQgssIYJDzoq4Lty4CjyNATHnDqlC4DQEpfIyAaIB3TIHniwgYfUtpswc+bs59v5eAaNFdQ3lVWWuDYbo+hgARoYssgoMr7zzGkL3p+vVe67B9fQwBIkLfkQBOy6cQICP0wxEgI3ROQB/cUmjbtsF8zYmGL+eC2rst4M9/DjSL0P//65qf338/ASEO4BE6t4BRFr6JAB6hcwLe4AKplD6uw7w0PIwWPgcWwCJ0TgBqZuX5FgBQSJLA43eVVErfq56XhuejhcJAAI/Q9yGAQ5EEZJ05vw+UJlP6ngBTiNLw2BmVYfQoAfahEKHvQ4BRAVAIJuDJbJZrICCZ0qcHhh9SDvbFZRgNCu04bwEiQn8HAYR7ICCZ0seJwZSweaQMo8cIEBH6mwlIp/RxdjAlbB4pw+gxAkSEvoAAfpoYQfLMBeiR3gLSKX2UCVPC5pEyjB4jgD85PyVmE3SY7+fyQg2gUKPAM+wBngAMO4MQU5JyWGdUgdFCod8D+DMLCBCnCS4v1AAKNQo8AwHplH6Q8okEiNMEgsXyNALSKf1ncrAvH04t9tYnjkGrYHw7C1CKnSZUjIIwApS+3iP0+N1rMJXS94NMQcrBvrgMo3ckgJ0mYhB9C0ChBoHHxQHJlD7KlHKwLy7DaKFwSwtgp4kYRN8CUKhB4HEEJFP6KDNKw2NnVIbRQiESAGH6gk3Q/L4WTxMRhqEBoFCLwOMJSKX0vcxUGt53RgU+Wij0BPAwfREB7DQRwbANHAoNEXg8Acnnt2gUCj0BRjZY5yICLDx/mpiKVeD5zQTw08QBCeCniQMSwE8TByRg6pT5uC/aA/jEptYiAvKdP5e3L2u41r4FVsG1n8sLPGrd9+cws1Qx8Xn6WgIs3tHfA6cwYFsCD3a/pLySgJdg3FXJSYD7VMXQDGH61Ehw18V5iXBvATxMPyABnO6TgIlZYU7bb6x5F+DgTws4LYBbxPfWRv6HSHEcC6DYG/+k4K3/ReYfFos1Nx7U8jYAAAAASUVORK5CYII=" alt=" ⌊ ⌋ [1 x 0 ] 1 [1 + xy] 0 1 - 1 ⌈ y⌉ = y- 1 . 1 " class="math-display" />
+</div>
+<p>Case statements use cases:</p>
+<div class="math-display">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAAA8BAMAAAAqIh19AAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAiRCrInaZVDLvZs3du0ScdlLJAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADqUlEQVRYCbWYPWgUQRTH3+3eXUK+PBQrCzcEAmJCRA4bQRaCUQiSU0wqwWglWiSNhZ0YDFhIIqQSCdcamwsSBYNCwCLBwkunIME+Fn4hRiU6bz52Z5yd2bnbyxBu3rz/vN/O7ezN/gmArV0ObGpm7ehiZoQN4G2ENjmz1r2bGWEFzB2zypnFqY+ZEVbA28AqZxb/OhCWQodJhikp/Hby9A7cnU8u7j9/NVmQsin8nl8AB9pLUkF7HK/DdjwwRCl8rNpUSvu2xLBQh66qGJh6B/6KWjvynI87S+DXVU0fNc6H3hcMs68Euc86Uc1Qfn588mbyVp17ALOPrmDJ6Ym2iYDVFlZoMFaB3FeWMX9Sfi+cuPMwec4awDIqXsm/dqTK53QsBySaq7ryL8DJ/HFe+19H4JRfCPzaMFJpu4dPFPK/84Sxo+sPgSwzuQl+HrqQydp2GXtyf4pu9wfyP3ml1gk+wd0W4hO2V0MV8N32FzrmIRTVah/zH0OeSZf2s75zErrr6mx9hPfHK3fWIf72yiTB7wtfQg4V71CVTyjUoKtCY35ByAV0KH8gv21htpYL8j/kvIgJ/xnGt87eAIoZnRYSrMMnEo9NAt0OEvphpImArv969eBF8N6InNTP7JRmdk6RRP9SbjyUBAz7x3EjBmppfF5W4H2jXcXC937HtL3g93yJ+Wfi0BKNrmKTnob8tGX9xd0YxZ6FeOwYka9N9pceT/r+DtUdKdZpZX486fz3obXQUSwDO54ov0hv4CoF+wuOBPu0Mvlp4/Gkrf9pYC90VPH3hceTzncEpExDPh5P+v15nVLpJpeBHU/a+uFD4Eawzyrz40nnj7Xo+WTHk84vGl8s9hWrKt5/bDq/7RtTsn2a+d4fB3KqvzXzgb7fzddw87fN83V/K60l8rcp70epJCncTEqS3B75W7zaCDlsYK/8LcG/wou4+1ucjU3ysCwBif52mOLRvzn6Ww5TPCzPren+luMb8LecpXpYlhT+KtYEvgF/y/mKh+U5wY+0wS2uNOBvI08Qe1gBEfzI3w6+E1ID/laURB5WJND8kz9sQrvPdpc8n67+ltUDf0mIEesFP/K3AGIDYn+rligj+fxhHpb4VakRvupviSYuwPztkDJfKqWhzGcvCeJX45bsb/kFuL/F37KxyXw+qWKcHAn0fIhGtqA5vo2oavr/Z4hfbWGb0mjN2vTkRc3Vk/Otyvq7rSIZOBuhQWhRemCxRSAT5nBgUlzz/wCne/J5b8iHXQAAAABJRU5ErkJggg==" alt=" { x, if x ≥ 0, |x | = - x, if x &lt; 0. " class="math-display" />
+</div>
+<p>Many arrays have lots of dots all over the place as in</p>
+<div class="math-display">
+<img src="data:image/png;base64,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" alt="- 2 1 0 0 ⋅⋅⋅ 0 1 - 2 1 0 ⋅⋅⋅ 0 0 1 - 2 1 ⋅⋅⋅ 0 ... .. 0. 0. 1. -.2 . . .. .. .. .. .. 1 0 0 0 ⋅⋅⋅ 1 - 2 " class="math-display" />
+</div>
+<div class="math-display">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAmBAMAAABE2sQuAAAAMFBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv3aB7AAAAD3RSTlMAVLsimd3vEKsyzYl2ZkSj8ahUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA/0lEQVQoFWNgYBBiQAYmXu4MDMwuochizA4My0B8V2RBDgaG+RvQBfkDGPgXoAtyLWBgC0AXBPLrG7AInjfAFGT+CxRDtZ2BgesAFkEfkBiaSt4LDA8wBN8wMIAcrwbEcMAZvXuLAwO7R77KBLgYA9v///8PILjDhzV7SzOqZw4C430DQ1sBsijzRwYG7kwG+QvIgixAQd5kBvkDyIKSQEEg8EfWzn4ALFgbiayQmwEkyHdoO7LgO7AgA4ObAZLoBqigfQNCkKcAJMhcwMD/ASFoywAS5E9AEXzi4vHLk4HfgcF+AUIlUCtQJY8Agz+yRQycoAQmsqUdWSGD11dPAPntOn0VdCVeAAAAAElFTkSuQmCC" alt="1 2 3 4 " class="math-display" />
+</div>
+<div class="math-display">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAABICAMAAAD7y5rAAAAANlBMVEX///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABHL6OuAAAAEXRSTlMAdolE7xBUq7si3WYyzZlAr03rCroAAAAJcEhZcwAADsQAAA7EAZUrDhsAAASCSURBVGgFxRnZgqMgDJBDRNnh/392IUBFSbA62+48jNSE3ORAxl5/XLyWn1nYDaM7SYW9/pfvvO+pKan7l//6DcLDzPeYqFmaezsitu5sOgV7l4p0d3cwNp9lXc4vLmnasF7idAjraZO7r66THdU3XmzHmH7gq7sBkYWawtRIp0/qA2j1nFvah1JwbgZBoYRzvOFRlksbv9vSI+hFMSVbrAOODTEiHLKvYK3LytTci80bj66hT1UWDCIRiTNhcO/aEDlIFSWOLFfZh54Ne/LwyHaTVFGY/TMDcK9GNhZwOMqx/9p2iDwGGeCAWG7H2TfmFVhCkHC5a3Xa6UJNjLiZE3QQs2CJQ5C09G3oPVvgEBiwFofYzuBs4ahU7/mMkCxMu5cVpXr/MiarkZa6KBLBY4sCczkpKrDmeA6XarF2Y16bZGfrsRJnipoqIO5l1sTTqz2lLlOGe0ybKoLnzuFiuXJ6dBPZddcnn7boKegY+Az7kP260Yf0M3yXfOoL+8/wwKgaMLANjwoaRvDNdxwCa0LD+U0Sj9BcSNXGpcLy1b8ppNwvkGL0WTEsRNT87WPEWAgxj22v+vBZLRvqIR0kOeLrNrLCNnSoZcy1aFmSKUMHpBrthAYVeEeiVsvE0TMKqoZhuvJkg0Ux29+vgQlU3yWGlBrzpRusnT61ElidS8hL4CwG9aAZfTQUVDk2qohu8ejSfFP/PHCv9VxQhBNnbsLs2ya9ihOnpMwXawri7Dbun10EMzEw1aALSnxXohxd9M8rnIJhhqVtZWKnQfG96J+3wDkfqss8FVYs8f1D6HvRP7+R1Deyhf4JP5S+FrIY3T+/kdRpFE/b+ap/zsO+GnSUgyOY7JyL0h7jdZX7Z031zzyFlCUtGYEa68ozdTM4R1f9sxCO4/1xkZzMVnH8iXxjnsTPb9n++DFTk0bKGxE2zJNPuTrBBupsKeTGdeEh40WsA99DqwFF+CF5cpvjA7axHqWhbtRvkIR/BZCp5P+vvs6n4PrqXzxCkZ+ATPxNxiv07Rqmhm/yzRwz92/yzXNZPMAPmNqZvim6IudzpSpj8BX2GU6XuYq5EQFbBn3z6ADbURuaORuiShYDF3NXKd98Prt+TsTrvcr6KKC7G/s35U2FubS/Eh1iYgfMudZUpyqdc9h3mcpeOaJ5Zr4OZAafkNKV236JWemV5wq3BJXCCZh+CsaJ0ep1T6jRTMnTZcBEVVEOADoip4nNeEna70UZdrOiwAuCulAH9w7uReNdPWEMvgtrEK0mMD7ZA0M/SUqVDI2Pvqn+JSj8TYihOYAJmcvss8T2rNLongRQtddHS29OEJd2bzoCKXWQEyEF5G0Qu/ZHltxGfdVCjTjg3kmyiUhJaZxkGgMeSSJJXnvn6MkZWmdD3DCD5DhQ71GVsNqvOllf+E+5t0G5uZxPHl1Ohw3a0Oc5mJImj80N9PwdNo2/VuLXBM22u8u5y2HmOLtP8fOCp3LzXW4vfN0nim98Z4ePdy8hymLtvoGfMX792x9tWugNR4tf84wEbBPLfwF55SCLtMBoOQAAAABJRU5ErkJggg==" alt="( a b c ) ( d e f ) g h i " class="math-display" />
+</div>
+<div class="tabular">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">first</td>
+<td style="text-align: left;">second</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">third</td>
+<td style="text-align: left;">fourth</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
