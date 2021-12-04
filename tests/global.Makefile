@@ -2,12 +2,16 @@
 
 f = test
 
-color-red=tput setaf 1; tput bold;
-color-green=tput setaf 2; tput bold;
-color-pop=tput sgr0 #
+oodiff = ../../bin/oodiff
 
-FAILURE=$(color-red)   printf "FAILURE " ; $(color-pop);
-SUCCESS=$(color-green) printf "SUCCESS " ; $(color-pop);
+color-red=\e[1;31m
+color-green=\e[1;32m
+color-pop=\e[0m
+
+FAILURE_=$(color-red)FAILURE$(color-pop)
+SUCCESS_=$(color-green)SUCCESS$(color-pop)
+FAILURE=printf "$(FAILURE_). See ./test.diff \n"
+SUCCESS=printf "$(SUCCESS_)\n"
 
 default:
 	@printf "$$ make check       *make FILE.diff, check if size==0.*\n"
@@ -26,7 +30,8 @@ new:
 clean:
 	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref $f.fls
 	rm -f $f.css $f.html $f.lg
-	rm -rf $f.bbl $f.blg $f.odt
+	rm -f $f.bbl $f.blg $f.odt
+	rm -f $f.bcf $f.bib $f.out $f.run.xml
 	rm -f $f*.png $f.pdf
 	rm -f $f.diff
 	rm -f temp.*
