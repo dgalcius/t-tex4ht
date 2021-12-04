@@ -1,19 +1,16 @@
-
-file=t-mwbk
-
 include ../global.Makefile
 
-#-1- produce html+png
+# -1- produce html+png
+# make html
 %.html: %.tex .FORCE
 	htlatex $*
 
-#-3- compare result with pre-saved version. Diff file should be empty
-%.diff: $f.html .FORCE
-	diff $f.html $f.ss > $@ || true
+# -2- make check
+%.diff: $f.html $f.ss.html
+	diff $^ > $@ || true
 	@du $@
 
-%.ss: .FORCE
-	cp $f.html $@
-
-
+# -3- make save
+%.ss:
+	cp $f.html $f.ss.html
 
