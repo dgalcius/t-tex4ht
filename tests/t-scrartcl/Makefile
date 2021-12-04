@@ -1,21 +1,20 @@
-
-file=t-scrartcl
-
 include ../global.Makefile
 
-#-1- produce html (xml, png or whatever)
-%.html: %.tex 
+# -1- produce html (xml, png or whatever)
+# make html
+%.html: %.tex
 	htlatex $*
 
-#-2- compare result with pre-saved version. Diff file should be empty 
-%.diff: %.html %.s
+# -2- compare result with pre-saved version. Diff file should be empty
+# make check
+%.diff: $f.html $f.ss.html
 	diff $^ > $@ || true
 	@du $@
 
-# save version with -- make -f <test>.save
-%.s: %.html .FORCE
-	cp $< $@
+# make save
+%.ss:
+	cp $f.html $f.ss.html
 
 .PRECIOUS: %.html
-.PHONY: %.s
+.PHONY: %.ss
 .FORCE:
