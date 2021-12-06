@@ -1,4 +1,10 @@
-###SHELL=/bin/bash
+SHELL=/bin/bash
+
+source=~/local/gitlab.com/tex4ht-mirror/tex4ht/lit
+source_htf=$(source)/tex4ht.dir/texmf/tex4ht/ht-fonts
+#
+export TEXMFDOTDIR := $(source)
+export TEX4HTINPUTS := $(source_htf)/{$$TEX4HTFONTSET}//;
 
 f = test
 
