@@ -1,0 +1,22 @@
+% author: deimi
+% date: 2021-12-07
+% issue: test case found in tex4ht-4ht.tex file
+%         and "nameref moved from old hyperref" section
+% solution:
+% tex-sx:
+% bug:
+% comments:
+%%
+\documentclass{article}
+\usepackage{hyperref}
+\begin{document}
+\section{abc}
+\label{foo}
+
+autoref:  \csname autoref\endcsname{foo}
+
+nameref:  \csname nameref\endcsname{foo}
+
+ref: \ref{foo}
+\end{document}
+
