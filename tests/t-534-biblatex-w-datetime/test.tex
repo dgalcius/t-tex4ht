@@ -9,6 +9,9 @@
 % comments:
 %%
 \documentclass{article}
+
+\RequirePackage{datetime}
+
 \begin{filecontents*}[overwrite]{test.bib}
 @book{knuth1986,
   address = {Reading, Mass},
@@ -23,9 +26,11 @@
 }
 \end{filecontents*}
 \usepackage[backend=biber,style=abnt]{biblatex}
+%\usepackage[style=authoryear]{biblatex}
 \addbibresource{test.bib}
 \usepackage{hyperref}
 \begin{document}
-Test \cite{knuth1986}.
+Test
+\cite{knuth1986}.
 \printbibliography
 \end{document}

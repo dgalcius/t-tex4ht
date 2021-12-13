@@ -1,22 +1,23 @@
 include ../global.Makefile
 
 # -1- produce html (xml, png or whatever)
-# make html
+# $ make odt
 %.odt: %.tex .FORCE
 	make4ht -f odt $f
 	biber $f
 	make4ht -f odt $f
 
-# -2- compare result with pre-saved version. Diff file should be empty
-# make check
+# -2-
+# $ make check
 %.diff: $f.odt $f.ss.odt
 	$(oodiff) $^ >$@ || true
 	@du $@
 
-# -3- make save
+# -3-
+# $ make save
 %.ss:
 	cp $f.odt $f.ss.odt
 
-.PRECIOUS: %.html
+.PRECIOUS: %.odt
 .PHONY: %.ss
 .FORCE:
