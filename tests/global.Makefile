@@ -1,5 +1,9 @@
 SHELL=/bin/bash
 
+extra_bin = ../../bin
+PATH := $(shell echo $$PATH)
+export PATH := $(extra_bin):$(PATH)
+
 source=~/local/gitlab.com/tex4ht-mirror/tex4ht/lit
 source_htf=$(source)/tex4ht.dir/texmf/tex4ht/ht-fonts
 #
