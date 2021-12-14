@@ -4,9 +4,9 @@
 
 A unit consists of three main files:
 
-- ~foo.tex~
+- ~test.tex~
 
- Minimal (non-)working example (MWE) ~.tex~ file.
+ Minimal (non-)working example (MWE) ~test.tex~ file.
  Would be nice to have metadata:
            - author/date of a file
            - issue description
@@ -14,7 +14,7 @@ A unit consists of three main files:
            - bug ID (?)
            - etc.
 
-- ~foo.ss~
+- ~test.ss~.html (or test.ss.odt, test.ss.xml, etc)
 
   Pre-saved results file, which is compared against build results.
   Can be in various formats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
@@ -31,34 +31,40 @@ A unit consists of three main files:
   2. %.diff - generate diff file
   3. %.ss   - presave file
 
+  Workflow:
+  1. $ make check - produce test.html; check against test.ss.html
+  2. $ make save  - copy test.html into test.ss.html
+  3. $ make clean - remove unnecessary files
+
 * Setting new unit test
 
 Run in shell:
 
-#+BEGIN_SRC 
-make unit=FOO new
+#+BEGIN_SRC sh
+make test=t-foo new
 #+END_SRC
 
 This will create three files:
-~./tests/FOO/Makefile~
-~./tests/FOO/FOO.tex~
-~./tests/FOO/FOO.ss~
+~./tests/t-foo/Makefile~
+~./tests/t-foo/test.tex~
+~./tests/t-foo/test.ss.html (empty)~
 
-Change directory to ~./tests/FOO/~.
-Put your LaTeX/TeX code in ~FOO.tex~ and amend metadata. Describe your issue.
-Put your command line in  ~Makefile~. Default is ~htlatex $<~.
+Change directory to ~./tests/t-foo/~.
+Put your LaTeX/TeX code in ~test.tex~ and amend metadata. Describe your issue.
+Put your command line in Makefile~. Default is ~htlatex $<~.
 
 Run:
 #+BEGIN_SRC sh
 make check
 #+END_SRC
-This will create your html(or other) file(s) and *.diff file.
-Initially you should get FAILURE. When you get correct results, issue command:
+It will create ~test.html~ (or other) file(s) and ~test.diff~ file.
+When you get correct results, issue command:
 #+BEGIN_SRC sh
 make save
 #+END_SRC
-This will pre-save your result HTML file with ~*.ss~ extension. 
-Run:
+which will pre-save your results (~test.ss.html~)
+
+Issue
 #+BEGIN_SRC sh
 make clean
 #+END_SRC
@@ -70,11 +76,11 @@ make check clean
 #+END_SRC
 you should get SUCCESS. 
 
-Leave ~FOO.ss~ file empty, if you are not able to get SUCCESS.
+Leave ~test.ss.html~ file empty, if you are not able to get SUCCESS.
 
-* Checking a unit
+* Checking a unit test
 
-Change directory to a unit test folder  ~./tests/FOO/~. Run
+Change directory to a unit test folder  ~./tests/t-foo/~. Run
 
 #+BEGIN_SRC
 make check
@@ -83,15 +89,15 @@ make check
 
 * Checking the bundle (all tests)
 
-You can check all test by running
+To check all tests run
 #+BEGIN_SRC sh
 make check
 #+END_SRC
 at the top folder.
 
-Your should get a summary report like this:
-(./build/summary.log)
-#+BEGIN_SRC 
+Your should get a summary report:
+(~./build/summary.log~)
+#+BEGIN_SRC sh
       Summary
 *******************
 001	SUCCESS (t-172-oolatex-spaces).
@@ -107,10 +113,8 @@ Your should get a summary report like this:
 011	SUCCESS (t-suits).
 #+END_SRC
 
-
-All files from ~/tests/t-<something>~ are copied to ~/build~
+All files from ~/tests/t-*~ are copied to ~./build~
 folder and command ~make check~ is run recursively.
-
 
 * Template files
   
@@ -120,11 +124,11 @@ folder and command ~make check~ is run recursively.
 
   Variables: ~FILE~, ~TODAY~
 
-  Needs GNU M4 macro processor.
+  Dependencies: GNU M4 macro processor.
 
 * External dependencies
 
   - GNU make (version 4.1)
-  - GNU M4 macro processor (version 1.4). for Makefile templates
+  - GNU M4 macro processor (version 1.4). Used for Makefile templates
   - pandoc (version 2.3.1). For standalone html file generation. see, e.g., t-suits, t-lettrine
   - make4ht (version v0.2b)
