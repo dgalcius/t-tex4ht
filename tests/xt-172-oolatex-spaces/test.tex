@@ -11,11 +11,18 @@
 \pagestyle{empty}
 \bibliographystyle{plain}
 
+\begin{filecontents}{test.bib}
+    @article{test,
+      author = "Anyone",
+      title = "Something",
+      year = 2010,
+    }
+\end{filecontents}
 \begin{document}
 \section{First} \label{sec:first}
 Citation with surrounding en dashes: --\cite{test}--
 
 Reference with surrounding en dashes: --\ref{sec:first}--
-\bibliography{texput}
+\bibliography{test}
 \end{document}
 %
