@@ -1,0 +1,52 @@
+% author: deimi
+% date: 2021-12-14
+% issue: <describe your issue>
+% solution:
+% tex-sx: https://stackoverflow.com/q/63081369
+% bug: https://puszcza.gnu.org.ua/bugs/?480
+% comments:
+%%
+
+\documentclass[11pt]{article}
+
+% Use Chicago Manual of Style:
+\usepackage[authordate,autocite=inline,backend=biber,natbib]{biblatex-chicago}
+\usepackage[colorlinks]{hyperref}
+% References file:
+\addbibresource{test.bib}
+\begin{filecontents}{test.bib}
+@misc{trialurl1,
+author = {George, Birdie},
+note = {\url{https://mail.yahoo.com/} Accessed 24 July 2020},
+year = {2020},
+}
+
+@misc{trialurl2,
+author = {George, Birdie},
+title = {Hi},
+note = {\url{https://mail.yahoo.com/} Accessed 24 July 2020},
+year = {2020},
+}
+
+@book{vanier,
+title = {Living Gently in a Violent World: The Prophetic Witness of Weakness},
+author = {Vanier, Jean and Hauerwas, Stanley},
+edition = {Second},
+year = {2018},
+publisher = {InterVarsity Press},
+}
+\end{filecontents}
+%
+
+\begin{document}
+
+Some writing stuff: \autocite{trialurl1} works with make4ht when no extra stuff before $\backslash$url, but doesn't work when add another feature, like a title or howpublished, etc.
+% Uncomment the following line, and the make4ht fails:
+, as in \cite{trialurl2}.
+
+More interesting stuff: \autocite{vanier} should have no problems with make4ht.
+
+% The list of references is printed:
+\printbibliography[heading=bibintoc]
+
+\end{document}
