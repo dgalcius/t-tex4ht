@@ -17,14 +17,14 @@ SUCCESS=printf "$(SUCCESS_) (*** $$i ***). \n">> $(sumlog)
 sumlog=./build/summary.log
 
 # 3 files are needed for a test unit:
-# (1) *.tex    - input file
-# (2) *.s      - presaved output file. Most like it will be html/xml,
-#                but can be binary format too, e.g., png.
-# (3) Makefile - rules how to produce output format.
-#                  At least two targets needed:
-#                  One for producing output (compiling)
-#                  Another for diffing results.
-# task - subfolder that starts with t-*
+# (1) test.tex:     input file
+# (2) test.ss.html:  presaved output file. Most like it will be html/xml,
+#                    but can be binary format too, e.g., png. odt
+# (3) Makefile:      rules how to produce output format.
+#                    At least two targets needed:
+#                    One for producing output (compiling)
+#                    Another for diffing results.
+# tasks - subfolders in ./tests that starts with t-*
 
 DATE:=$(shell date +%Y-%m-%d)
 
@@ -33,9 +33,9 @@ test:=$(test:./tests/%/=%)
 
 default:
 	@printf "$$ make check             *check all units*\n"
-	@printf "$$ make unit=FOO check    *check single unit FOO*\n"
-	@printf "$$ make unit=FOO save     *pre-save single unit FOO*\n"
-	@printf "$$ make unit=FOO new      *new bare-bone unit-test ./tests/FOO/*\n"
+	@printf "$$ make test=FOO check    *check single unit FOO*\n"
+	@printf "$$ make test=FOO save     *pre-save single unit FOO*\n"
+	@printf "$$ make test=FOO new      *new bare-bone unit-test ./tests/FOO/*\n"
 
 .ONESHELL:
 check: check.pre check.units check.post
