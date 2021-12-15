@@ -2,7 +2,7 @@
 
 * Basics
 
-A unit consists of three main files:
+A unit test consists of three main files:
 
 - ~test.tex~
 
@@ -14,7 +14,7 @@ A unit consists of three main files:
            - bug ID (?)
            - etc.
 
-- ~test.ss~.html (or test.ss.odt, test.ss.xml, etc)
+- ~test.ss.html~ (or ~test.ss.odt~, ~test.ss.xml~, etc.)
 
   Pre-saved results file, which is compared against build results.
   Can be in various formats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
@@ -22,19 +22,30 @@ A unit consists of three main files:
 - ~Makefile~
 
   Define rules:
-  1. how to produce results
-  2. how to compare results with pre-saved version
-  3. how to make pre-saved version
+  1. how to produce results (e.g., ~test.html~ file)
+  2. how to compare results with pre-saved version (e.g., ~test.html~ vs ~test.ss.html~)
+  3. how to make pre-saved version (e.g., ~test.ss.html~)
 
   Common targets:
-  1. %.html - generate results
-  2. %.diff - generate diff file
-  3. %.ss   - presave file
+  1. ~%.html~ - generate results
+  2. ~%.diff~ - generate diff file
+  3. ~%.ss~   - presave file
 
   Workflow:
-  1. $ make check - produce test.html; check against test.ss.html
-  2. $ make save  - copy test.html into test.ss.html
-  3. $ make clean - remove unnecessary files
+  1. produce ~test.html~; check against ~test.ss.html~.
+  #+begin_src shell
+    make check
+  #+end_src
+ 
+  2. pre-save good copy when ready
+  #+begin_src shell
+    make save
+  #+end_src
+  
+  3. remove unnecessary files
+  #+begin_src shell
+    make clean
+  #+end_src
 
 * Setting new unit test
 
@@ -45,13 +56,13 @@ make test=t-foo new
 #+END_SRC
 
 This will create three files:
-~./tests/t-foo/Makefile~
-~./tests/t-foo/test.tex~
-~./tests/t-foo/test.ss.html (empty)~
+- ~./tests/t-foo/Makefile~
+- ~./tests/t-foo/test.tex~
+- ~./tests/t-foo/test.ss.html~ (empty)
 
 Change directory to ~./tests/t-foo/~.
 Put your LaTeX/TeX code in ~test.tex~ and amend metadata. Describe your issue.
-Put your command line in Makefile~. Default is ~htlatex $<~.
+Put your command line in ~Makefile~. Default is ~htlatex $<~.
 
 Run:
 #+BEGIN_SRC sh
@@ -62,7 +73,7 @@ When you get correct results, issue command:
 #+BEGIN_SRC sh
 make save
 #+END_SRC
-which will pre-save your results (~test.ss.html~)
+which will pre-save your results (e.g., ~test.ss.html~).
 
 Issue
 #+BEGIN_SRC sh
@@ -74,7 +85,7 @@ If you run again:
 #+BEGIN_SRC sh
 make check clean
 #+END_SRC
-you should get SUCCESS. 
+you should get a SUCCESS message. 
 
 Leave ~test.ss.html~ file empty, if you are not able to get SUCCESS.
 
@@ -115,6 +126,9 @@ Your should get a summary report:
 
 All files from ~/tests/t-*~ are copied to ~./build~
 folder and command ~make check~ is run recursively.
+
+Folders with prefix ~t-~ are /active/ tests.
+Folders with prefix ~xt-~ are invalid tests.
 
 * Template files
   
