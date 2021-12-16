@@ -6,8 +6,19 @@
 % tex-sx:
 % bug:      https://puszcza.gnu.org.ua/bugs/?172
 % comments:
-%%
+% OP is fixed
+% New problems:
+% 1. {scrartcl} with make4ht -f odt give error: \bibname undefined.
+% {scrartcl} define \refname.
+% No problem if {article} is used
+% 2.  With mk4ht oolatex runner I have invalid result with TL2021,
+% but valid result with TL2019. \cite -> [1], \ref -> null
+% Valid with tl2019
+% Invalid with tl2021
+% in tl2021 tried: make4ht -f odt -a debug test
+
 \documentclass{scrartcl}
+%\documentclass{article}
 \pagestyle{empty}
 \bibliographystyle{plain}
 
