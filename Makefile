@@ -15,6 +15,7 @@ FAILURE=printf "$(FAILURE_) (*** $$i ***). See ./build/$$i/test.diff \n">> $(sum
 SUCCESS=printf "$(SUCCESS_) (*** $$i ***). \n">> $(sumlog)
 
 sumlog=./build/summary.log
+elapsedlog=./build/elapsed.log
 
 # 3 files are needed for a test unit:
 # (1) test.tex:     input file
@@ -49,10 +50,15 @@ check.pre:
 ## run tests
 .ONESHELL:
 check.units:
+	START=$$(date +%s.%N)
 	for i in $(test); do
 		echo $$i;
 		make -C build/$$i check
 	done
+	END=$$(date +%s.%N)
+	DIFF=$$( echo "scale=3; ($${END} - $${START})*1/1" | bc )
+	echo "$${DIFF} (sec)" >$(elapsedlog)
+
 
 ## prepare tests summary report
 .ONESHELL:
@@ -62,7 +68,9 @@ check.post:
 		@if [[ ! -e ./build/$$i/test.diff || -s ./build/$$i/test.diff ]] ; then  $(FAILURE) ; else $(SUCCESS) ; fi
 	@done
 	@printf "*******************\n      Summary\n*******************\n"
+	ELAPSED=$$(cat $(elapsedlog))
 	nl -nrz -w3 $(sumlog)
+	@printf "\n ** Elapsed: $${ELAPSED} **\n"
 
 clean:
 	rm -rf build
