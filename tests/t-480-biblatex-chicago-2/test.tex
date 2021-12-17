@@ -1,0 +1,24 @@
+% author: deimi
+% date: 2021-12-17
+% issue:
+%    I've found that we need to reset catcodes before loading of Ifthen, we get
+%    some issues otherwise, like in this sample:
+%       \documentclass{article}
+%       \usepackage{biblatex-chicago}
+%       \usepackage[english]{babel}
+%       \begin{document}
+%       hello
+%       \end{document}
+%     It produces an error about unknown command \string:, which is caused by wrong
+%     catcode of the ":" character.
+% solution:
+% tex-sx: https://stackoverflow.com/q/YYYYY
+% bug: https://puszcza.gnu.org.ua/bugs/?480
+% comments:
+%%
+\documentclass{article}
+\usepackage{biblatex-chicago}
+\usepackage[english]{babel}
+\begin{document}
+hello
+\end{document}
