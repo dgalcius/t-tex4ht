@@ -47,7 +47,7 @@ new:
 	touch $f.ss
 
 clean:
-	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref $f.fls
+	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref $f.fls $f.toc
 	rm -f $f.css $f.html $f.lg
 	rm -f $f.bbl $f.brf $f.blg $f.odt
 	rm -f $f.bcf $f.bib $f.out $f.run.xml
@@ -55,10 +55,10 @@ clean:
 	rm -f $f.diff
 	rm -f temp.*
 
-# shotcuts
-pdf: $f.pdf
+# shortcuts
+pdf:  $f.pdf
 html: $f.html
-odt: $f.odt
+odt:  $f.odt
 
 %.pdf: %.ps
 	ps2pdf $<
