@@ -1,0 +1,33 @@
+% author: deimi
+% date: 2021-12-19
+% issue: Backrefs with hyperlinks are broken (with bibtex) 
+% solution: r1034
+% tex-sx: https://stackoverflow.com/q/YYYYY
+% bug: https://puszcza.gnu.org.ua/bugs/?XXX
+% gh issue: https://github.com/michal-h21/tex4ebook/issues/64
+% comments:
+%%
+\documentclass{book}
+
+\begin{filecontents}{test.bib}
+@Book{newton1687philosophiae,
+  Title                    = {Philosophiae naturalis principia mathematica},
+  Author                   = {Newton, I.},
+  Url                      = {https://goo.gl/1ahxL2},
+  Year                     = {1687},
+  Publisher                = {J. Societatis Regiae ac Typis J. Streater}
+}
+\end{filecontents}
+
+\usepackage{hyperref}
+\usepackage[hyperpageref]{backref}  % Doesn't work with [hyperref] either
+\bibliographystyle{unsrt}
+
+\begin{document}
+
+Some citation \cite{newton1687philosophiae}.
+
+\bibliography{test}
+
+\end{document}
+
