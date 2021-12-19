@@ -24,9 +24,18 @@ FAILURE=printf "$(FAILURE_). See ./test.diff \n"
 SUCCESS=printf "$(SUCCESS_)\n"
 
 default:
-	@printf "$$ make check       *make FILE.diff, check if size==0.*\n"
-	@printf "$$ make save        *pre-save result as FILE.ss*\n"
-	@printf "$$ make clean       *clean it up - delete auxiliary files*\n"
+	@printf "$$ make check       make test.diff, check if size==0.\n"
+	@printf "$$ make save        pre-save result as test.ss.html\n"
+	@printf "$$ make clean       clean it up - delete auxiliary files\n"
+	@printf "*--*\n"
+	@printf "$$ make pdf         * produce test.pdf\n"
+	@printf "                   * dvips workflow: tex->dvi->ps->pdf\n"
+	@printf "$$ make html        * produce test.html.\n"
+	@printf "                   * Assuming '%%.html' is defined\n"
+	@printf "$$ make odt         * produce test.odt.\n"
+	@printf "                   * Assuming '%%.odt' is defined\n"
+
+
 
 check: $f.diff
 	@if [ -s $< ] ; then  $(FAILURE) echo See $< ; else $(SUCCESS) echo \($f\) ; fi
@@ -40,7 +49,7 @@ new:
 clean:
 	rm -f $f.4* $f.aux $f.dvi $f.idv $f.log $f.tmp $f.xref $f.fls
 	rm -f $f.css $f.html $f.lg
-	rm -f $f.bbl $f.blg $f.odt
+	rm -f $f.bbl $f.brf $f.blg $f.odt
 	rm -f $f.bcf $f.bib $f.out $f.run.xml
 	rm -f $f*.png $f.pdf
 	rm -f $f.diff
