@@ -1,0 +1,36 @@
+% author: Michal
+% date: 
+% issue: test for scholarly HTML
+% solution: 
+% tex-sx: https://stackoverflow.com/q/YYYYY
+% bug: https://puszcza.gnu.org.ua/bugs/?XXX
+% comments:
+% This is a test of HTML5 configuration for tex4ht following guidances of Scholarly HTML [1].
+%
+% The code used here will be incorporated to the tex4ht sources later.
+%
+% [1] https://w3c.github.io/scholarly-html/#structure
+% 
+\documentclass{article}
+\title{Scholarly HTML sample}
+\author{Michal Hoftich \and others}
+\usepackage{biblatex}
+\begin{filecontents}{test.bib}
+@online{scholarly,
+  title = {Scholarly HTML},
+  url = {https://w3c.github.io/scholarly-html/},
+  author = {Tzviya Siegman and Robin Berjon}
+}
+\end{filecontents}
+\addbibresource{test.bib}
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+This is a \textit{test file} for \cite{scholarly}
+
+\printbibliography
+
+\end{document}
