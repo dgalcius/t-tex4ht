@@ -16,7 +16,3 @@ include ../global.Makefile
 # -3- make save
 %.ss:
 	cp $f.html $f.ss.html
-
-.PRECIOUS: %.html
-.PHONY: %.ss
-.FORCE:
