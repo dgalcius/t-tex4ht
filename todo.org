@@ -23,7 +23,8 @@
 
   test summary report: ./build/summary.log
 
-* TODO line numbers in diff files: <!--l. 50-->
+* DONE line numbers in diff files: <!--l. 50-->
    can we clean it:
    + using tex4ht option?
    + using diff utils?
+   + redefine \inputlineno to be fixed token "00". <-- DONE in  _t-test.tex
