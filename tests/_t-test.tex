@@ -1,0 +1,11 @@
+% In tex4ht configuration style
+% there are abundant code with \inputlinenoo printed
+% for debugging purpose:
+% \EndP\HCode{<!--l. \the\inputlineno-->%
+% It would be better to have smth like
+% \Hinputlineo macro, that expands into \HCode{},
+% but could be redefine to something else
+% if necessary.
+% Meanwhile
+\newtoks\inputlineno
+\inputlineno={00}
