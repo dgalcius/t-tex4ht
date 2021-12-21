@@ -28,3 +28,9 @@
    + using tex4ht option?
    + using diff utils?
    + redefine \inputlineno to be fixed token "00". <-- DONE in  _t-test.tex
+     - clashes with 'csquote.sty'. Fixed with AtBeginDocument.
+
+* TODO biblatex/[01-92]
+  Biblatex sample documents (not unit tests).
+  What results shoud be? How to check if results are valid?
+
