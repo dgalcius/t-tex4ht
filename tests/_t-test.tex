@@ -6,6 +6,8 @@
 % \Hinputlineo macro, that expands into \HCode{},
 % but could be redefine to something else
 % if necessary.
-% Meanwhile
-\newtoks\inputlineno
-\inputlineno={00}
+% Note: \usepackage{csquotes} uses \inputlineno
+% Meanwhile ...
+%\ifdefined\HCode
+\AddToHook {begindocument}{\newtoks\inputlineno\inputlineno={00}}%
+%\fi
