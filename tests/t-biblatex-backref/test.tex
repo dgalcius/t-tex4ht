@@ -1,0 +1,95 @@
+% author: deimi
+% date: 2021-12-23
+% issue: <describe your issue>
+% solution:
+% tex-sx: https://stackoverflow.com/q/YYYYY
+% bug: https://puszcza.gnu.org.ua/bugs/?XXX
+% comments:
+% Sample from https://github.com/michal-h21/make4ht/issues/58
+%%
+\input{../_t-test.tex}%
+\documentclass{article}
+\usepackage{lipsum}
+\usepackage[noibid,%backref=true,
+backrefstyle=three,eprint=false,
+authordate,backend=biber]{biblatex-chicago}
+\DefineBibliographyStrings{english}{
+  backrefpage={Cited on page},
+  backrefpages={Cited on pages}
+}%
+% IF backref=true, THEN to get backref line in a smaller font size use this:
+% taken from: https://tex.stackexchange.com/
+% questions/76133/bibliography-backref-on-new-line-with-smaller-font-size
+\renewbibmacro*{pageref}{%
+  \addperiod% NEW
+  % adds a period at the end of the reference but ahead of backref
+  \iflistundef{pageref}
+  {}
+  %% {\printtext[parens]{% ORIGINAL BACKREF CODE
+  {\newline\footnotesize\printtext[parens]{% NEW
+      \ifnumgreater{\value{pageref}}{1}
+      {\bibstring{backrefpages}\ppspace}
+      {\bibstring{backrefpage}\ppspace}%
+      \printlist[pageref][-\value{listtotal}]{pageref}}}}% ORIGINAL BACKREF CODE
+%% \printlist[pageref][-\value{listtotal}]{pageref}\addperiod}}}% NEW
+% adds a period behind the page(s), such as "(cited on page x.)"
+% 
+% 
+% Options for Backrefstyle (See Biblatex Documentation p. 52 and 53):
+% backrefstyle=none
+% no range of pages; only single pages shown
+% backrefstyle=two
+% 2 or more pages turn into a range of pages
+% backrefstyle=three
+% 3 or more pages turn into a range of pages
+% backrefstyle=two+
+% backrefstyle=three+
+% backrefstyle=all+	
+% IF citestyle=authoryear THEN use the following:
+\DeclareDelimFormat[textcite]{postnotedelim}{\addcolon\space}
+% =Doppelpunkt nach dem Datum in textcite
+%% \DeclareDelimFormat[textcite]{postnotedelim}{\addsemicolon\space}
+% =Strichpunkt nach dem Datum in textcite
+\DeclareDelimFormat[parencite]{postnotedelim}{\addcolon\space}
+% =Doppelpunkt nach dem Datum in parencite
+\DeclareFieldFormat{postnote}{\mknormrange{#1}}
+\DeclareFieldFormat{multipostnote}{\mknormrange{#1}}
+% erstellt individuelle Normrange um Zeichenfolge beim Zitieren zu ändern.
+\begin{filecontents}{test.bib}
+@misc{trialurl1,
+author = {George, Birdie},
+note = {\url{https://mail.yahoo.com/} Accessed 24 July 2020},
+year = {2020},
+}
+
+@misc{trialurl2,
+author = {George, Birdie},
+title = {Hi},
+note = {\url{https://mail.yahoo.com/} Accessed 24 July 2020},
+year = {2020},
+}
+
+@book{vanier,
+title = {Living Gently in a Violent World: The Prophetic Witness of Weakness},
+author = {Vanier, Jean and Hauerwas, Stanley},
+edition = {Second},
+year = {2018},
+publisher = {InterVarsity Press},
+}
+\end{filecontents}
+
+\addbibresource{test.bib}
+\usepackage[english]{babel}
+\usepackage{ebgaramond}
+\usepackage[autostyle,german=quotes]{csquotes}
+\usepackage{hyperref}
+\begin{document}
+hello\autocite{trialurl1}
+some text
+again\autocite{trialurl1}
+\lipsum[1-12]
+
+hello\autocite{trialurl1}
+\printbibliography
+
+\end{document}
