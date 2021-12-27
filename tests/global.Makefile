@@ -64,7 +64,7 @@ odt:  $f.odt
 	ps2pdf $<
 
 %.ps: %.dvi
-	dvips -j0 $<
+	dvips -j1 $<
 
 %.dvi: %.tex .FORCE
 	latex -recorder $<
