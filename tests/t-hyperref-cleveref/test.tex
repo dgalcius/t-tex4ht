@@ -1,0 +1,30 @@
+% author: deimi
+% date: 2021-12-27
+% issue:
+%   nested link: <a href='#x1-2r1'>Theorem <a href='#theorem.1'>1</a></a>
+% solution:
+% tex-sx: https://stackoverflow.com/q/623922
+% working rev.: 1043
+%%
+\input{../_t-test.tex}%
+\documentclass{amsart}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+Look at our \hyperref[thm]{main theorem}.
+
+Look at our Theorem~\ref{thm}.
+
+\begin{theorem}\label{thm}
+  Something
+\end{theorem}
+
+Our main theorem is \Cref{thm}.
+
+Our main theorem is \Cref{thm}.
+
+\end{document}
