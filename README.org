@@ -3,8 +3,10 @@
 * Basics
 
 A unit test consists of three main files:
+- tex file (~test.tex)~, presaved results file (e.g., ~test.ss.html~ or ~test.ss.org~, etc.),
+  and ~Makefile~
 
-- ~test.tex~
+** tex file ~test.tex~
 
  Minimal (non-)working example (MWE) ~test.tex~ file.
  Would be nice to have metadata:
@@ -14,12 +16,12 @@ A unit test consists of three main files:
            - bug ID (?)
            - etc.
 
-- ~test.ss.html~ (or ~test.ss.odt~, ~test.ss.xml~, etc.)
+** presaved results file ~test.ss.html~ (or ~test.ss.odt~, ~test.ss.xml~, etc.)
 
   Pre-saved results file, which is compared against build results.
   Can be in various formats: ~html~, ~xml~, ~css~, plain text, ~svg~, binary (~png~)
 
-- ~Makefile~
+** build recipe in  ~Makefile~
 
   Define rules:
   1. how to produce results (e.g., ~test.html~ file)
@@ -31,7 +33,7 @@ A unit test consists of three main files:
   2. ~%.diff~ - generate diff file
   3. ~%.ss~   - presave file
 
-  Workflow:
+*  Workflow:
   1. produce ~test.html~; check against ~test.ss.html~.
   #+begin_src shell
     make check
